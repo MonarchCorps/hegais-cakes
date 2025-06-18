@@ -5,24 +5,24 @@ import { ArrowRight } from "lucide-react";
 import { getProducts } from "@/http";
 import { stripHtml } from "@/utils";
 
-// Define the Product type for PocketBase shop items
 interface Product {
-    id: string;
-    name: string;
+    collectionId: string;
+    collectionName: string;
+    created: string;
     description: string;
+    id: string;
     image1: string;
-    image2?: string;
-    image3?: string;
-    image4?: string;
+    image2: string;
+    image3: string;
+    image4: string;
+    name: string;
     price: string;
-    [key: string]: any;
+    updated: string;
 }
-
-// Utility to strip HTML tags from a string
 
 export default async function ShopPage() {
     const products: Product[] = await getProducts();
-
+    
     return (
         <main>
             {/* Header Section */}
@@ -53,11 +53,10 @@ export default async function ShopPage() {
 
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
                     {products.map((product: Product) => (
-                        <Link href={`/shop/${product?.id}`} key={product?.id} className="flex flex-col gap-2">
+                        <Link href={`/shop/${product.id}`} key={product.id} className="flex flex-col gap-2">
                             <img
-                                src={product?.image1}
-                                // src={`${import.meta.env.VITE_PB_URL}/api/files/products/${product?.id}/${product?.image1}`}
-                                alt={product?.name}
+                                src={product.image1}
+                                alt={product.name}
                                 className="h-[400px] w-full object-cover rounded-md shadow-md"
                             />
                             <span className="text-lg font-semibold">{product.name}</span>
@@ -84,7 +83,7 @@ export default async function ShopPage() {
                                     Need something custom? Book a Consultation!
                                 </h1>
                                 <p className="mb-6 text-white text-center text-lg max-w-[44rem] mx-auto">
-                                    Let's bring your cake dreams to life with a personalized design and flavor journey.
+                                    Let&apos;s bring your cake dreams to life with a personalized design and flavor journey.
                                 </p>
                                 <Link href="/workshop/inquiry" className="bg-[#E04F85] text-white py-3 px-8 mt-3 rounded-3xl flex items-center gap-x-2 w-fit">
                                     Book A Consultation

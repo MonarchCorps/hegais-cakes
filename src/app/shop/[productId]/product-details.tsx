@@ -43,10 +43,10 @@ export default function TasterBoxProductDetails({ productId }: { productId: stri
     }, [productId]);
 
     const images = [
-        product?.image1 || null,
-        product?.image2 || null,
-        product?.image3 || null,
-        product?.image4 || null
+        product?.image1 || "",
+        product?.image2 || "",
+        product?.image3 || "",
+        product?.image4 || ""
     ];
 
     const flavors = [
