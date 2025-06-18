@@ -60,7 +60,7 @@ export default function Header() {
                     <Link href="/" className="text-[#0F4C81] bg-[#A7C7E7] py-2 px-2 rounded-full">
                         <Heart size={20} />
                     </Link>
-                    <Link href="/shop" className="text-[#0F4C81] bg-[#A7C7E7] py-2 px-2 rounded-full">
+                    <Link href="/cart" className="text-[#0F4C81] bg-[#A7C7E7] py-2 px-2 rounded-full">
                         <ShoppingCart size={20} />
                     </Link>
                     <Link href="/" className="text-[#0F4C81] bg-[#A7C7E7] py-2 px-2 rounded-full">
