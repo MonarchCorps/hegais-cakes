@@ -3,6 +3,7 @@ import { Berkshire_Swash, Lato } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/header";
 import Footer from "@/components/footer";
+import { Toaster } from "@/components/Toaster";
 
 const lato = Lato({
     subsets: ["latin"],
@@ -35,6 +36,7 @@ export default function RootLayout({
                         {children}
                     </div>
                     <Footer />
+                    <Toaster />
                 </div>
             </body>
         </html>
