@@ -7,9 +7,11 @@ import { toast } from "react-hot-toast";
 import { useState } from "react";
 import { useFormik } from "formik";
 import { weddingCakeInquirySchema } from "@/schema";
+import { motion } from "framer-motion";
 
 export default function WeddingCakesInquiry() {
     const [loading, setLoading] = useState(false);
+    const [dietaryOption, setDietaryOption] = useState("");
 
     const formik = useFormik({
         initialValues: {
@@ -42,13 +44,13 @@ export default function WeddingCakesInquiry() {
         },
     });
 
-    
+
     return (
         <main>
 
             <section>
                 <div>
-                    <div className="relative h-[70vh]">
+                    <div className="relative h-[40rem]">
                         <div className="absolute inset-0 size-full bg-black/50"></div>
                         <div className="relative size-full">
                             <Image
@@ -58,12 +60,22 @@ export default function WeddingCakesInquiry() {
                                 className="absolute inset-0 size-full object-cover object-top-right -z-10"
                             />
                             <div className="absolute inset-0 flex flex-col items-center justify-center">
-                                <h1 className={`${berkshireSwash.className} text-center text-7xl leading-tight capitalize text-white`}>
+                                <motion.h1
+                                    initial={{ opacity: 0, y: 10 }}
+                                    transition={{ duration: 0.7 }}
+                                    whileInView={{ opacity: 1, y: 0 }}
+                                    viewport={{ once: true }}
+                                    className={`${berkshireSwash.className} text-center text-7xl leading-tight capitalize text-white mb-3 max-[510px]:text-5xl`}>
                                     Wedding Cake Inquiry
-                                </h1>
-                                <p className="text-white text-center text-lg max-w-[44rem] mx-auto">
+                                </motion.h1>
+                                <motion.p
+                                    initial={{ opacity: 0, y: 30 }}
+                                    whileInView={{ opacity: 1, y: 0 }}
+                                    transition={{ duration: 0.7 }}
+                                    viewport={{ once: true, amount: 0.25 }}
+                                    className="text-white text-center text-lg max-w-[44rem] mx-auto max-[510px]:text-base">
                                     Every wedding deserves a showstopping cake. Let&apos;s design yours together.
-                                </p>
+                                </motion.p>
                             </div>
                         </div>
                     </div>
@@ -71,317 +83,215 @@ export default function WeddingCakesInquiry() {
             </section>
 
             <section>
-                <form className="max-w-[50rem] mx-auto bg-white rounded-lg shadow-none p-6" onSubmit={formik.handleSubmit}>
-                    <div className="py-4 px-2">
-                        <p className="capitalize text-xl my-5 font-semibold text-[#0F4C81]">
-                            Inquiry Form
-                        </p>
+                <div className="max-w-[55rem] mx-auto py-12 px-3">
+                    <div className="border-b-[2px] border-[#D9D9D9] pb-8">
+                        <h1 className="text-[#0F4C81] font-bold text-3xl">Inquiry Form</h1>
                     </div>
-                    <div className="flex flex-col gap-5">
-                        {/* Wedding Date */}
-                        <div>
-                            <label className="block text-[#0F4C81] font-medium mb-1" htmlFor="wedding_date">
-                                Wedding Date:
-                            </label>
+
+                    <form onSubmit={formik.handleSubmit} className="flex flex-col gap-5 py-7">
+                        <div className="flex flex-col gap-y-3">
+                            <label htmlFor="wedding_date" className="font-medium text-[#333333] text-[18px]">Wedding Date:</label>
                             <input
+                                type="date"
                                 id="wedding_date"
                                 name="wedding_date"
-                                type="date"
-                                className="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-[#0F4C81]"
-                                placeholder="Wedding Date"
+                                value={formik.values.wedding_date}
                                 onChange={formik.handleChange}
                                 onBlur={formik.handleBlur}
-                                value={formik.values.wedding_date}
-                                disabled={loading}
+                                className="w-full border border-[#D9D9D9] py-2.5 px-3 rounded-md font-medium"
                             />
-                            {formik.touched.wedding_date && formik.errors.wedding_date && (
-                                <div className="text-red-500 text-sm mt-1">{formik.errors.wedding_date}</div>
-                            )}
                         </div>
-                        {/* Wedding Venue */}
-                        <div>
-                            <label className="block text-[#0F4C81] font-medium mb-1" htmlFor="wedding_venue">
-                                Wedding Venue:
-                            </label>
+
+                        <div className="flex flex-col gap-y-3">
+                            <label htmlFor="wedding_venue" className="font-medium text-[#333333] text-[18px]">Wedding Venue:</label>
                             <input
+                                type="text"
                                 id="wedding_venue"
                                 name="wedding_venue"
-                                type="text"
-                                className="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-[#0F4C81]"
-                                placeholder="Wedding Venue"
+                                value={formik.values.wedding_venue}
                                 onChange={formik.handleChange}
                                 onBlur={formik.handleBlur}
-                                value={formik.values.wedding_venue}
-                                disabled={loading}
+                                className="w-full border border-[#D9D9D9] py-2.5 px-3 rounded-md font-medium"
                             />
-                            {formik.touched.wedding_venue && formik.errors.wedding_venue && (
-                                <div className="text-red-500 text-sm mt-1">{formik.errors.wedding_venue}</div>
-                            )}
                         </div>
-                        {/* Number of Tiers */}
-                        <div>
-                            <label className="block text-[#0F4C81] font-medium mb-1" htmlFor="number_of_tiers">
-                                Number of Tiers:
-                            </label>
+
+                        <div className="flex flex-col gap-y-3">
+                            <label htmlFor="number_of_tiers" className="font-medium text-[#333333] text-[18px]">Number of Tiers:</label>
                             <input
+                                type="text"
                                 id="number_of_tiers"
                                 name="number_of_tiers"
-                                type="text"
-                                className="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-[#0F4C81]"
-                                placeholder="Number of Tiers"
+                                value={formik.values.number_of_tiers}
                                 onChange={formik.handleChange}
                                 onBlur={formik.handleBlur}
-                                value={formik.values.number_of_tiers}
-                                disabled={loading}
+                                className="w-full border border-[#D9D9D9] py-2.5 px-3 rounded-md font-medium"
                             />
-                            {formik.touched.number_of_tiers && formik.errors.number_of_tiers && (
-                                <div className="text-red-500 text-sm mt-1">{formik.errors.number_of_tiers}</div>
-                            )}
                         </div>
-                        {/* Number of Guests */}
-                        <div>
-                            <label className="block text-[#0F4C81] font-medium mb-1" htmlFor="number_of_guests">
-                                Number of Guests (please specify if you would like your cake to serve all your guests):
-                            </label>
+
+                        <div className="flex flex-col gap-y-3">
+                            <label htmlFor="number_of_guests" className="font-medium text-[#333333] text-[18px]">Number of Guests:</label>
                             <input
+                                type="text"
                                 id="number_of_guests"
                                 name="number_of_guests"
-                                type="text"
-                                className="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-[#0F4C81]"
-                                placeholder="Number of Guests"
-                                onChange={formik.handleChange}
-                                onBlur={formik.handleBlur}
                                 value={formik.values.number_of_guests}
-                                disabled={loading}
-                            />
-                            {formik.touched.number_of_guests && formik.errors.number_of_guests && (
-                                <div className="text-red-500 text-sm mt-1">{formik.errors.number_of_guests}</div>
-                            )}
-                        </div>
-                        {/* Cake Flavours */}
-                        <div>
-                            <label className="block text-[#0F4C81] font-medium mb-1" htmlFor="cake_flavours">
-                                Cake Flavours:
-                            </label>
-                            <input
-                                id="cake_flavours"
-                                name="cake_flavours"
-                                type="text"
-                                className="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-[#0F4C81]"
-                                placeholder="Cake Flavours"
                                 onChange={formik.handleChange}
                                 onBlur={formik.handleBlur}
-                                value={formik.values.cake_flavours}
-                                disabled={loading}
+                                className="w-full border border-[#D9D9D9] py-2.5 px-3 rounded-md font-medium"
                             />
-                            {formik.touched.cake_flavours && formik.errors.cake_flavours && (
-                                <div className="text-red-500 text-sm mt-1">{formik.errors.cake_flavours}</div>
-                            )}
                         </div>
-                        {/* Dietary Needs */}
-                        <div>
-                            <label className="block text-[#0F4C81] font-medium mb-1">
-                                Dietary Needs:
-                            </label>
-                            <div className="flex items-center gap-6">
-                                <label className="inline-flex items-center">
+
+                        <div className="flex flex-col gap-y-3">
+                            <label htmlFor="dietary_needs" className="font-medium text-[#333333] text-[18px]">Dietary Needs:</label>
+                            <div className="flex items-center space-x-4">
+                                <div className="flex items-center gap-x-2">
                                     <input
-                                        type="checkbox"
-                                        name="dietary_needs"
-                                        value="Gluten-Free"
-                                        className="accent-[#0F4C81] mr-2"
-                                        checked={formik.values.dietary_needs?.includes("Gluten-Free")}
-                                        onChange={e => {
-                                            const { checked, value } = e.target;
-                                            let arr = formik.values.dietary_needs ? formik.values.dietary_needs.split(",") : [];
-                                            if (checked) {
-                                                arr.push(value);
-                                            } else {
-                                                arr = arr.filter(v => v !== value);
-                                            }
-                                            formik.setFieldValue("dietary_needs", arr.join(","));
+                                        type="radio"
+                                        id="gluten_free"
+                                        name="dietary_option"
+                                        className="size-5"
+                                        checked={dietaryOption === "Gluten-Free"}
+                                        onChange={() => {
+                                            setDietaryOption("Gluten-Free");
+                                            formik.setFieldValue("dietary_needs", "Gluten-Free");
                                         }}
-                                        disabled={loading}
                                     />
-                                    Gluten-Free
-                                </label>
-                                <label className="inline-flex items-center">
+                                    <label htmlFor="gluten_free" className="font-medium text-[#333333] text-[18px]">Gluten-Free</label>
+                                </div>
+                                <div className="flex items-center gap-x-2">
                                     <input
-                                        type="checkbox"
-                                        name="dietary_needs"
-                                        value="Vegan"
-                                        className="accent-[#0F4C81] mr-2"
-                                        checked={formik.values.dietary_needs?.includes("Vegan")}
-                                        onChange={e => {
-                                            const { checked, value } = e.target;
-                                            let arr = formik.values.dietary_needs ? formik.values.dietary_needs.split(",") : [];
-                                            if (checked) {
-                                                arr.push(value);
-                                            } else {
-                                                arr = arr.filter(v => v !== value);
-                                            }
-                                            formik.setFieldValue("dietary_needs", arr.join(","));
+                                        type="radio"
+                                        id="vegan"
+                                        name="dietary_option"
+                                        className="size-5"
+                                        checked={dietaryOption === "Vegan"}
+                                        onChange={() => {
+                                            setDietaryOption("Vegan");
+                                            formik.setFieldValue("dietary_needs", "Vegan");
                                         }}
-                                        disabled={loading}
                                     />
-                                    Vegan
-                                </label>
-                                <label className="inline-flex items-center">
+                                    <label htmlFor="vegan" className="font-medium text-[#333333] text-[18px]">Vegan</label>
+                                </div>
+                                <div className="flex items-center gap-x-2">
                                     <input
-                                        type="checkbox"
-                                        name="dietary_needs"
-                                        value="Other"
-                                        className="accent-[#0F4C81] mr-2"
-                                        checked={formik.values.dietary_needs?.includes("Other")}
-                                        onChange={e => {
-                                            const { checked, value } = e.target;
-                                            let arr = formik.values.dietary_needs ? formik.values.dietary_needs.split(",") : [];
-                                            if (checked) {
-                                                arr.push(value);
-                                            } else {
-                                                arr = arr.filter(v => v !== value);
-                                            }
-                                            formik.setFieldValue("dietary_needs", arr.join(","));
+                                        type="radio"
+                                        id="other"
+                                        name="dietary_option"
+                                        className="size-5"
+                                        checked={dietaryOption === "Other"}
+                                        onChange={() => {
+                                            setDietaryOption("Other");
+                                            formik.setFieldValue("dietary_needs", "");
                                         }}
-                                        disabled={loading}
                                     />
-                                    Other (Specify)
-                                </label>
+                                    <label htmlFor="other" className="font-medium text-[#333333] text-[18px]">Other (Please Specify)</label>
+                                </div>
                             </div>
-                            {formik.touched.dietary_needs && formik.errors.dietary_needs && (
-                                <div className="text-red-500 text-sm mt-1">{formik.errors.dietary_needs}</div>
-                            )}
-                            <div className="mt-2">
+                            {dietaryOption === "Other" && (
                                 <input
-                                    id="other_dietary_need"
-                                    name="other_dietary_need"
                                     type="text"
-                                    className="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-[#0F4C81]"
-                                    placeholder="If Other, please specify"
+                                    id="dietary_needs"
+                                    name="dietary_needs"
+                                    value={formik.values.dietary_needs}
                                     onChange={formik.handleChange}
                                     onBlur={formik.handleBlur}
-                                    value={formik.values.other_dietary_need}
-                                    disabled={!formik.values.dietary_needs?.includes("Other") || loading}
+                                    className="w-full border border-[#D9D9D9] py-2.5 px-3 rounded-md font-medium"
+                                    required
+                                    placeholder="Please specify dietary need"
                                 />
-                                {formik.touched.other_dietary_need && formik.errors.other_dietary_need && (
-                                    <div className="text-red-500 text-sm mt-1">{formik.errors.other_dietary_need}</div>
-                                )}
-                            </div>
+                            )}
                         </div>
-                        {/* Design Inspiration (Upload any reference photos) */}
-                        <div className="mt-5">
-                            <label className="block text-[#0F4C81] font-medium mb-1" htmlFor="design_inspiration">
-                                Design Inspiration (Upload any reference photos)
-                            </label>
+
+                        <div className="flex flex-col gap-y-3">
+                            <label htmlFor="cake_flavours" className="font-medium text-[#333333] text-[18px]">Cake Flavours:</label>
                             <input
+                                type="text"
+                                id="cake_flavours"
+                                name="cake_flavours"
+                                value={formik.values.cake_flavours}
+                                onChange={formik.handleChange}
+                                onBlur={formik.handleBlur}
+                                className="w-full border border-[#D9D9D9] py-2.5 px-3 rounded-md font-medium"
+                            />
+                        </div>
+
+
+                        <div className="flex flex-col gap-y-3">
+                            <label htmlFor="design_inspiration" className="font-medium text-[#333333] text-[18px]">Design Inspiration (Upload any reference photos)</label>
+                            <input
+                                type="file"
                                 id="design_inspiration"
                                 name="design_inspiration"
-                                type="file"
-                                className="block w-full text-sm text-gray-500
-                                    file:mr-4 file:py-2 file:px-4
-                                    file:rounded-full file:border-0
-                                    file:text-sm file:font-semibold
-                                    file:bg-[#F3F4F6] file:text-[#0F4C81]
-                                    hover:file:bg-[#e0e7ef]"
-                                onChange={event => {
-                                    formik.setFieldValue("design_inspiration", event.currentTarget.files?.[0] || null);
-                                }}
-                                disabled={loading}
+                                onChange={formik.handleChange}
+                                onBlur={formik.handleBlur}
+                                className="w-full border border-[#D9D9D9] py-2.5 px-3 rounded-md font-medium"
                             />
-                            {formik.touched.design_inspiration && formik.errors.design_inspiration && (
-                                <div className="text-red-500 text-sm mt-1">{formik.errors.design_inspiration}</div>
-                            )}
                         </div>
-                        {/* Couple's Names */}
-                        <div className="mt-5">
-                            <label className="block text-[#0F4C81] font-medium mb-1" htmlFor="couple_name">
-                                Couples&apos; Names:
-                            </label>
+
+                        <div className="flex flex-col gap-y-3">
+                            <label htmlFor="couple_name" className="font-medium text-[#333333] text-[18px]">Couples&apos; Names:</label>
                             <input
+                                type="text"
                                 id="couple_name"
                                 name="couple_name"
-                                type="text"
-                                className="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-[#0F4C81]"
+                                value={formik.values.couple_name}
                                 onChange={formik.handleChange}
                                 onBlur={formik.handleBlur}
-                                value={formik.values.couple_name}
-                                disabled={loading}
+                                className="w-full border border-[#D9D9D9] py-2.5 px-3 rounded-md font-medium"
                             />
-                            {formik.touched.couple_name && formik.errors.couple_name && (
-                                <div className="text-red-500 text-sm mt-1">{formik.errors.couple_name}</div>
-                            )}
                         </div>
-                        {/* Email Address */}
-                        <div className="mt-5">
-                            <label className="block text-[#0F4C81] font-medium mb-1" htmlFor="email">
-                                Email Address:
-                            </label>
+
+                        <div className="flex flex-col gap-y-3">
+                            <label htmlFor="email" className="font-medium text-[#333333] text-[18px]">Email Address:</label>
                             <input
+                                type="email"
                                 id="email"
                                 name="email"
-                                type="email"
-                                className="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-[#0F4C81]"
+                                value={formik.values.email}
                                 onChange={formik.handleChange}
                                 onBlur={formik.handleBlur}
-                                value={formik.values.email}
-                                disabled={loading}
+                                className="w-full border border-[#D9D9D9] py-2.5 px-3 rounded-md font-medium"
                             />
-                            {formik.touched.email && formik.errors.email && (
-                                <div className="text-red-500 text-sm mt-1">{formik.errors.email}</div>
-                            )}
                         </div>
-                        {/* Phone Number */}
-                        <div className="mt-5">
-                            <label className="block text-[#0F4C81] font-medium mb-1" htmlFor="phone_number">
-                                Phone Number:
-                            </label>
+
+                        <div className="flex flex-col gap-y-3">
+                            <label htmlFor="phone_number" className="font-medium text-[#333333] text-[18px]">Phone Number:</label>
                             <input
+                                type="tel"
                                 id="phone_number"
                                 name="phone_number"
-                                type="tel"
-                                className="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-[#0F4C81]"
+                                value={formik.values.phone_number}
                                 onChange={formik.handleChange}
                                 onBlur={formik.handleBlur}
-                                value={formik.values.phone_number}
-                                disabled={loading}
+                                className="w-full border border-[#D9D9D9] py-2.5 px-3 rounded-md font-medium"
                             />
-                            {formik.touched.phone_number && formik.errors.phone_number && (
-                                <div className="text-red-500 text-sm mt-1">{formik.errors.phone_number}</div>
-                            )}
                         </div>
-                        {/* Additional Details or Special Requests */}
-                        <div className="mt-5">
-                            <label className="block text-[#0F4C81] font-medium mb-1" htmlFor="additional_details">
-                                Additional Details or Special Requests:
-                            </label>
+
+                        <div className="flex flex-col gap-y-3">
+                            <label htmlFor="additional_details" className="font-medium text-[#333333] text-[18px]">Additional Details or Special Requests:</label>
                             <textarea
                                 id="additional_details"
                                 name="additional_details"
-                                rows={4}
-                                className="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-[#0F4C81]"
-                                placeholder="Enter any other details or special requests you have"
+                                value={formik.values.additional_details}
                                 onChange={formik.handleChange}
                                 onBlur={formik.handleBlur}
-                                value={formik.values.additional_details}
-                                disabled={loading}
+                                placeholder="Enter any other details or special requests you have"
+                                className="w-full border border-[#D9D9D9] py-2.5 px-3 rounded-md font-medium h-60 resize-none"
                             />
-                            {formik.touched.additional_details && formik.errors.additional_details && (
-                                <div className="text-red-500 text-sm mt-1">{formik.errors.additional_details}</div>
-                            )}
                         </div>
-                        {/* Submit Button */}
-                        <div className="mt-8 flex justify-center">
+
+                        <div className="flex justify-center">
                             <button
                                 type="submit"
-                                className="w-full bg-[#0F4C81] text-white py-3 px-8 rounded-full font-semibold hover:bg-[#0d3a60] transition-colors"
-                                disabled={loading}
+                                className="cursor-pointer w-full bg-[#0F4C81] text-white py-4 px-3 rounded-full font-semibold text-lg border-2 border-current hover:bg-transparent hover:text-[#0F4C81] hover:border-[#0F4C81] transition-all duration-300"
                             >
                                 {loading ? "Sending..." : "Send Inquiry"}
                             </button>
                         </div>
-                    </div>
-                </form>
+                    </form>
+                </div>
             </section>
+
         </main>
     );
 }
