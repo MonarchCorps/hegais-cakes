@@ -16,19 +16,19 @@ const features =
             desc: "Designed for convenience, our packaging guarantees seamless handling and transport, keeping your treats fresh and ready to enjoy wherever you are."
         },
         {
-            img: "/icon/illustration 2.png",
+            img: "/icon/Illustration 2.png",
             alt: "Effortless ordering",
             title: "Effortless ordering",
             desc: "Our user-friendly e-commerce platform ensures stress-free ordering and prompt delivery, perfect for busy schedules or last-minute events."
         },
         {
-            img: "/icon/illustration 3.png",
+            img: "/icon/Illustration 3.png",
             alt: "Build Your Box",
             title: "Build Your Box",
             desc: "Imagine it, and we can make it happen. Create a custom selection that perfectly matches your event or personal taste."
         },
         {
-            img: "/icon/illustration 4.png",
+            img: "/icon/Illustration 4.png",
             alt: "Event Takeaway",
             title: "Event Takeaway",
             desc: "Perfect for weddings, corporate events, or special occasions, our Taster Boxes serve as thoughtful takeaways that guests will remember and savour long after the event."
