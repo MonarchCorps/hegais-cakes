@@ -10,15 +10,15 @@ export default function SignupNewsLetter() {
 
     return (
         <section>
-            <div className="max-w-[50rem] mx-auto py-12 px-3">
-                <h1 className={`${berkshireSwash.className} text-center text-3xl leading-tight capitalize text-[#E04F85]`}>
+            <div className="max-w-[50rem] mx-auto py-12 px-7">
+                <h1 className={`${berkshireSwash.className} text-center text-3xl leading-tight capitalize text-[#E04F85] max-[510px]:text-2xl`}>
                     Get sweet deals and updates!
                 </h1>
-                <p className="text-[#0F4C81] max-w-[40rem] mx-auto mt-3">
+                <p className="text-[#0F4C81] max-w-[40rem] mx-auto mt-3 text-center max-[510px]:text-sm">
                     Be the first to know about new products, discounts and what&apos;s happening in Hegai Cakes
                 </p>
                 <form
-                    className="flex items-center mt-10 border border-[#0F4C81] rounded-full"
+                    className="flex items-center mt-10 max-[510px]:flex-col max-[510px]:gap-y-3"
                     onSubmit={async (e) => {
                         e.preventDefault();
                         setNewsletterLoading(true);
@@ -39,7 +39,7 @@ export default function SignupNewsLetter() {
                         name="newsletter-email"
                         id="newsletter-email"
                         placeholder="Enter your email"
-                        className="w-full p-2 rounded-3xl focus:border-none focus:outline-none"
+                        className="w-full p-2 rounded-l-3xl rounded-r-none border border-[#0F4C81] max-[510px]:rounded-r-3xl"
                         value={newsletterEmail}
                         onChange={e => setNewsletterEmail(e.target.value)}
                         required
@@ -47,7 +47,7 @@ export default function SignupNewsLetter() {
                     />
                     <button
                         type="submit"
-                        className="bg-[#0F4C81] text-white py-2 px-8 rounded-r-3xl"
+                        className="bg-[#0F4C81] text-white py-[9px] px-8 rounded-r-3xl max-[510px]:rounded-l-3xl"
                         disabled={newsletterLoading}
                     >
                         {newsletterLoading ? "Subscribing..." : "Subscribe"}
