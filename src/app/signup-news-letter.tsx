@@ -9,7 +9,7 @@ export default function SignupNewsLetter() {
     const [newsletterMessage, setNewsletterMessage] = useState<string | null>(null);
 
     return (
-        <section>
+        <section id="signup-news-letter">
             <div className="max-w-[50rem] mx-auto py-12 px-7">
                 <h1 className={`${berkshireSwash.className} text-center text-3xl leading-tight capitalize text-[#E04F85] max-[510px]:text-2xl`}>
                     Get sweet deals and updates!
