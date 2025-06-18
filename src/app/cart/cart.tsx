@@ -72,6 +72,15 @@ export const CartPage = ({
     const shipping = 200; // flat
     const total = subtotal + shipping;
 
+    if (cart.length === 0) {
+        return (
+            <div className="max-w-4xl mx-auto p-6 bg-white min-h-screen">
+                <h1 className="text-3xl font-bold text-[#0F4C81] mb-8">My Cart</h1>
+                <p className="text-center text-gray-500">Your cart is empty.</p>
+            </div>
+        );
+    }
+
     return (
         <div className="max-w-4xl mx-auto p-6 bg-white min-h-screen">
             <h1 className="text-3xl font-bold text-[#0F4C81] mb-8">My Cart</h1>
