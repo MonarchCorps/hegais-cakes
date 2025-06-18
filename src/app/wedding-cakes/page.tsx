@@ -112,44 +112,6 @@ export default function WeddingCakes() {
                 </div>
             </section>
 
-            {/* 
-            <section>
-                <div className="relative py-12 px-3">
-                    <div className="max-w-[90%] mx-auto">
-                        <div className="relative mb-8">
-                            <h1 className={`${berkshireSwash.className} text-center text-3xl leading-tight capitalize text-[#0F4C81]`}>
-                                Exquisite designs, unforgettable taste
-                                <span className="absolute -bottom-3 left-1/2 -translate-x-1/2 w-[10rem] h-1 bg-[#0F4C81]"></span>
-                            </h1>
-                        </div>
-                        <p className="text-[#0F4C81] max-w-[40rem] mx-auto">
-                            Whether your dream is a classic tiered beauty, a floral fantasy, or a bold modern statement, we design cakes that leave a lasting impression.
-                        </p>
-
-                        <div className="grid grid-cols-2 gap-x-4 gap-y-4 mt-10 items-center">
-
-                            <img
-                                src={"/images/testimonial-2.webp"}
-                                alt="Taster Box"
-                                className="w-full max-h-[25rem] object-contain"
-                            />
-                            <div>
-                                <h1 className={`${berkshireSwash.className} text-3xl leading-tight capitalize text-[#0F4C81]`}>Features</h1>
-                                <ol className="list-decimal list-inside space-y-3 mt-6">
-                                    <li>Fully customized designs based on your preferences</li>
-                                    <li>A wide range of flavours, fillings, and decorations</li>
-                                    <li>Made with the finest ingredients for a truly indulgent experience</li>
-                                </ol>
-                                <Link href="/wedding-cakes/catalogue" className="mt-10 bg-[#0F4C81] text-white py-3 px-8 rounded-3xl flex items-center gap-x-2 w-fit">
-                                    View Catalogue
-                                    <ArrowRight size={20} className="size-5" />
-                                </Link>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section> */}
-
         </main>
     );
 }
