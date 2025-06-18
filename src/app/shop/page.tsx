@@ -47,7 +47,7 @@ export default function ShopPage() {
                                 <p className="mb-6 text-white text-center text-lg max-w-[44rem] mx-auto">
                                     Let’s bring your cake dreams to life with a personalized design and flavor journey.
                                 </p>
-                                <Link href="/" className="bg-[#E04F85] text-white py-3 px-8 mt-3 rounded-3xl flex items-center gap-x-2 w-fit">
+                                <Link href="/workshop/inquiry" className="bg-[#E04F85] text-white py-3 px-8 mt-3 rounded-3xl flex items-center gap-x-2 w-fit">
                                     Book A Consultation
                                     <ArrowRight size={20} className="size-5 mt-2" />
                                 </Link>

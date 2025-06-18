@@ -26,7 +26,7 @@ export default function TasterBox() {
                                 <p className="text-white text-center text-lg max-w-[44rem] mx-auto">
                                     Whether you’re indulging personally, gifting, or sharing with a group, our Taster Boxes are designed to bring your flavour dreams to life in every bite
                                 </p>
-                                <Link href="/" className="bg-[#0F4C81] text-white py-3 px-8 mt-3 rounded-3xl flex items-center gap-x-2 w-fit">
+                                <Link href="/taster-box/inquiry" className="bg-[#0F4C81] text-white py-3 px-8 mt-3 rounded-3xl flex items-center gap-x-2 w-fit">
                                     Order now
                                     <Heart size={20} className="size-5" />
                                 </Link>

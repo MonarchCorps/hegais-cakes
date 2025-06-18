@@ -3,44 +3,44 @@ import { Banana, Carrot, Heart } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 
-const catalogue = [
-    {
-        name: "A & A",
-        flavours: ["Salted Caramel", "Mango Passionfruit", "Lemon Poppyseed"],
-        photography: "Lucy Long Photography",
-        venue: "Bisham Abbey"
-    },
-    {
-        name: "A & C",
-        flavours: ["Strawberries & Cream"],
-        photography: "Boslens Studios",
-        venue: "-"
-    },
-    {
-        name: "T & E",
-        flavours: ["Red Velvet", "Carrot w/nuts", "Salted Caramel", "Chocolate Fruitcake"],
-        photography: "-",
-        venue: "Holiday Inn Basildon"
-    },
-    {
-        name: "M & W",
-        flavours: ["Red Velvet", "Mango Passionfruit", "Carrot w/out nuts", "Strawberry", "Banana"],
-        photography: "-",
-        venue: "De Vere Grand Connaught Rooms"
-    },
-    {
-        name: "J & S",
-        flavours: ["Vanilla", "Red Velvet", "Mango Passionfruit"],
-        photography: "Zeal Photography",
-        venue: "North Mymms Park"
-    },
-    {
-        name: "E & I",
-        flavours: ["Vanilla", "Red Velvet"],
-        photography: "Prestige Photography IRL",
-        venue: "The Glencarn Hotel Ireland"
-    }
-]
+// const catalogue = [
+//     {
+//         name: "A & A",
+//         flavours: ["Salted Caramel", "Mango Passionfruit", "Lemon Poppyseed"],
+//         photography: "Lucy Long Photography",
+//         venue: "Bisham Abbey"
+//     },
+//     {
+//         name: "A & C",
+//         flavours: ["Strawberries & Cream"],
+//         photography: "Boslens Studios",
+//         venue: "-"
+//     },
+//     {
+//         name: "T & E",
+//         flavours: ["Red Velvet", "Carrot w/nuts", "Salted Caramel", "Chocolate Fruitcake"],
+//         photography: "-",
+//         venue: "Holiday Inn Basildon"
+//     },
+//     {
+//         name: "M & W",
+//         flavours: ["Red Velvet", "Mango Passionfruit", "Carrot w/out nuts", "Strawberry", "Banana"],
+//         photography: "-",
+//         venue: "De Vere Grand Connaught Rooms"
+//     },
+//     {
+//         name: "J & S",
+//         flavours: ["Vanilla", "Red Velvet", "Mango Passionfruit"],
+//         photography: "Zeal Photography",
+//         venue: "North Mymms Park"
+//     },
+//     {
+//         name: "E & I",
+//         flavours: ["Vanilla", "Red Velvet"],
+//         photography: "Prestige Photography IRL",
+//         venue: "The Glencarn Hotel Ireland"
+//     }
+// ]
 
 
 export default function WeddingCakesCatalogue() {
@@ -65,7 +65,7 @@ export default function WeddingCakesCatalogue() {
                                 <p className="text-white text-center text-lg max-w-[44rem] mx-auto">
                                     A showcase of our past clients’ dream cake- the flavours, photographers & venues that made their day special
                                 </p>
-                                <Link href="/" className="bg-[#0F4C81] text-white py-3 px-8 mt-3 rounded-3xl flex items-center gap-x-2 w-fit">
+                                <Link href="/wedding-cakes/inquiry" className="bg-[#0F4C81] text-white py-3 px-8 mt-3 rounded-3xl flex items-center gap-x-2 w-fit">
                                     Book a consultation
                                     <Heart size={20} className="size-5" />
                                 </Link>

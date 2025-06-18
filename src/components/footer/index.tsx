@@ -10,12 +10,14 @@ export default function Footer() {
 
                     <div>
                         <div className="relative size-24">
-                            <Image
-                                src="/images/logo.webp"
-                                alt="Hegai Cakes Logo"
-                                fill
-                                className="size-full object-cover"
-                            />
+                            <Link href="/">
+                                <Image
+                                    src="/images/logo.webp"
+                                    alt="Hegai Cakes Logo"
+                                    fill
+                                    className="size-full object-cover"
+                                />
+                            </Link>
                         </div>
                         <div className="flex items-center gap-x-2">
                             <a href="" className="bg-[#0F4C81] text-white py-2 px-2 rounded-full">

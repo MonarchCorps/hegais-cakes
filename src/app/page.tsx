@@ -19,7 +19,7 @@ export default function Home() {
                         <div className="space-y-3 text-white">
                             <h1 className={`${berkshireSwash.className} text-5xl leading-tight capitalize text-white`}>“...because cake deserves its own moment”</h1>
                             <p className="text-lg">Discover luxury cakes, handcrafted to celebrate life’s sweetest moments</p>
-                            <Link href="/" className="bg-[#E04F85] text-white py-3 px-8 mt-3 rounded-3xl flex items-center gap-x-2 w-fit">
+                            <Link href="/taster-box/inquiry" className="bg-[#E04F85] text-white py-3 px-8 mt-3 rounded-3xl flex items-center gap-x-2 w-fit">
                                 Order now
                                 <Heart size={20} className="size-5" />
                             </Link>
@@ -69,7 +69,7 @@ export default function Home() {
                             </div>
                             <h1 className="text-[#333333] font-700 text-2xl mt-5">Taster Boxes</h1>
                             <p className="text-[#E04F85]">Easy, handy, and perfect for on-the-go moments</p>
-                            <Link href="/" className="bg-[#E04F85] text-white py-3 px-8 mt-3 rounded-3xl flex items-center gap-x-2 w-fit">
+                            <Link href="/taster-box" className="bg-[#E04F85] text-white py-3 px-8 mt-3 rounded-3xl flex items-center gap-x-2 w-fit">
                                 Learn More
                                 <ArrowRight size={20} />
                             </Link>
@@ -87,7 +87,7 @@ export default function Home() {
                             </div>
                             <h1 className="text-[#333333] font-700 text-2xl mt-5">Wedding Cakes</h1>
                             <p className="text-[#E04F85]">Exquisite, tailored creations for your big day</p>
-                            <Link href="/" className="bg-[#E04F85] text-white py-3 px-8 mt-3 rounded-3xl flex items-center gap-x-2 w-fit">
+                            <Link href="/wedding-cakes" className="bg-[#E04F85] text-white py-3 px-8 mt-3 rounded-3xl flex items-center gap-x-2 w-fit">
                                 Learn More
                                 <ArrowRight size={20} />
                             </Link>
@@ -123,7 +123,7 @@ export default function Home() {
                             </div>
                             <h1 className="text-[#333333] font-700 text-2xl mt-5">Workshops</h1>
                             <p className="text-[#E04F85]">Elevate your team bonding with our engaging baking workshops</p>
-                            <Link href="/" className="bg-[#E04F85] text-white py-3 px-8 mt-3 rounded-3xl flex items-center gap-x-2 w-fit">
+                            <Link href="/workshop" className="bg-[#E04F85] text-white py-3 px-8 mt-3 rounded-3xl flex items-center gap-x-2 w-fit">
                                 Learn More
                                 <ArrowRight size={20} />
                             </Link>
@@ -168,7 +168,7 @@ export default function Home() {
                                 className="size-full object-cover"
                             />
                         </div>
-                        <Link href="/" className="bg-[#0F4C81] text-white py-3 px-8 mt-3 rounded-3xl flex items-center gap-x-2 w-fit mx-auto">
+                        <Link href="/shop" className="bg-[#0F4C81] text-white py-3 px-8 mt-3 rounded-3xl flex items-center gap-x-2 w-fit mx-auto">
                             Order Now
                             <ArrowRight size={20} />
                         </Link>
@@ -216,7 +216,7 @@ export default function Home() {
                             </button>
                             <p className="flex-1 text-[#0F4C81] max-w-[40rem] mx-auto mt-12 text-center">
                                 “A pretty cake with great sponge! It was so moist!!! Everyone loved itt! Thank you so much again”
-                                <p className="font-bold text-[#0F4C81] mt-10">M.K</p>
+                                <span className="font-bold text-[#0F4C81] mt-10">M.K</span>
                             </p>
                             <button className="bg-[#0F4C81] text-white py-2 px-2 rounded-3xl flex items-center gap-x-2 w-fit">
                                 <ArrowRight size={20} />

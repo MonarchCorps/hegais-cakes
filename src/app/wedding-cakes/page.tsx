@@ -25,7 +25,7 @@ export default function WeddingCakes() {
                                 <p className="text-white text-center text-lg max-w-[44rem] mx-auto">
                                     Our Wedding Cakes are designed to reflect your unique love story, blending stunning artistry with mouthwatering flavours.
                                 </p>
-                                <Link href="/" className="bg-[#0F4C81] text-white py-3 px-8 mt-3 rounded-3xl flex items-center gap-x-2 w-fit">
+                                <Link href="/wedding-cakes/inquiry" className="bg-[#0F4C81] text-white py-3 px-8 mt-3 rounded-3xl flex items-center gap-x-2 w-fit">
                                     Book a consultation
                                     <Heart size={20} className="size-5" />
                                 </Link>
@@ -65,7 +65,7 @@ export default function WeddingCakes() {
                                     <li>A wide range of flavours, fillings, and decorations</li>
                                     <li>Made with the finest ingredients for a truly indulgent experience</li>
                                 </ol>
-                                <Link href="/" className="mt-10 bg-[#0F4C81] text-white py-3 px-8 rounded-3xl flex items-center gap-x-2 w-fit">
+                                <Link href="/wedding-cakes/catalogue" className="mt-10 bg-[#0F4C81] text-white py-3 px-8 rounded-3xl flex items-center gap-x-2 w-fit">
                                     View Catalogue
                                     <ArrowRight size={20} className="size-5" />
                                 </Link>
