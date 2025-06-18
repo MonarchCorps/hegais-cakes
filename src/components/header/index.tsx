@@ -4,17 +4,125 @@ import { Heart, Search, ShoppingCart } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { RiMenu4Line } from "react-icons/ri";
+import { RxCross2 } from "react-icons/rx";
+import { GoSearch } from "react-icons/go";
+import { startTransition, useState } from "react";
+
+const mobileNavLinks = [
+    {
+        label: "Home",
+        href: "/"
+    },
+    {
+        label: "Our Story",
+        href: "/our-story"
+    },
+    {
+        label: "Taster Boxes",
+        href: "/taster-box"
+    },
+    {
+        label: "Cakes",
+        href: "/wedding-cakes"
+    },
+    {
+        label: "Workshops",
+        href: "/workshop"
+    },
+    {
+        label: "Shop",
+        href: "/shop"
+    }
+]
 
 export default function Header() {
+    const [mobileLinks, setMobileLinks] = useState(mobileNavLinks);
+    const [isMobileNavOpen, setIsMobileNavOpen] = useState(false);
     const pathname = usePathname();
+    const [searchFilter, setSearchFilter] = useState("");
+
+    const handleFilterSearchNav = (e: React.ChangeEvent<HTMLInputElement>) => {
+        const value = e.target.value;
+        setSearchFilter(value);
+        startTransition(() => {
+            const filteredLinks = mobileNavLinks.filter((link) =>
+                link.label.toLowerCase().includes(value.toLowerCase())
+            );
+            setMobileLinks(filteredLinks);
+        });
+    };
 
     return (
-        <header>
+        <header className="relative max-[943px]:bg-[#A7C7E7]">
             <div className="py-4 text-center w-full bg-[#0F4C81] text-white font-medium">Order Your Taster Boxes! ♡</div>
             <div className="flex items-center justify-between max-w-[95%] mx-auto">
 
+                {/* mobile nav */}
+                <div className="hidden max-[943px]:block flex-shrink-0">
+                    <Link href="/cart" className="block text-white bg-[#0F4C81] py-2 px-2 rounded-full">
+                        <ShoppingCart size={20} />
+                    </Link>
+
+                    {/* Overlay */}
+                    <div
+                        className={`fixed inset-0 z-[1000] transition-all duration-300 ${isMobileNavOpen ? 'bg-black/95 pointer-events-auto' : 'bg-black/0 pointer-events-none'}`}
+                        onClick={() => setIsMobileNavOpen(false)}
+                        aria-hidden="true"
+                    />
+
+                    {/* Sliding Nav */}
+                    <div
+                        className={`fixed left-0 right-0 bottom-0 z-[1010] transition-transform duration-400 ease-in-out ${isMobileNavOpen ? 'translate-y-0' : 'translate-y-full'} w-full h-[93%] bg-white rounded-t-4xl px-4 py-6 shadow-2xl`}
+                        style={{ willChange: 'transform' }}
+                        onClick={e => e.stopPropagation()}
+                    >
+                        <div className="flex items-center justify-between">
+                            <div className="relative size-24 max-[510px]:size-20">
+                                <Link href="/">
+                                    <Image
+                                        src="/images/logo.webp"
+                                        alt="Hegai Cakes Logo"
+                                        fill className="size-full object-cover"
+                                    />
+                                </Link>
+                            </div>
+                            <button
+                                type="button"
+                                className="cursor-pointer"
+                                onClick={() => setIsMobileNavOpen(false)}
+                            >
+                                <RxCross2 size={30} />
+                            </button>
+                        </div>
+                        <div className="mt-5 relative">
+                            <input
+                                type="text"
+                                placeholder="Search"
+                                className="w-full border border-[#E04F85] py-3 px-4 pl-14 rounded-full text-[#E04F85] placeholder:text-[#E04F85] focus:outline-[2px] focus:outline-[#E04F85]"
+                                onChange={handleFilterSearchNav}
+                                value={searchFilter}
+                            />
+                            <GoSearch size={24} color="#E04F85" className="absolute left-4 top-1/2 -translate-y-1/2" />
+                        </div>
+                        <nav className="mt-10">
+                            <ul className="flex flex-col gap-y-6.5 items-center font-medium text-2xl">
+                                {mobileLinks.length > 0 ? (
+                                    mobileLinks.map((link) => (
+                                        <li key={link.href}>
+                                            <Link href={link.href}>{link.label}</Link>
+                                        </li>
+                                    ))
+                                ) : (
+                                    <li className="font-medium text-base mt-2 opacity-70">No Links Found for your query</li>
+                                )}
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+
                 {/* logo */}
-                <div className="relative size-24">
+                <div className="relative size-24 max-[510px]:size-20">
                     <Link href="/">
                         <Image
                             src="/images/logo.webp"
@@ -26,7 +134,7 @@ export default function Header() {
                 </div>
 
                 {/* nav */}
-                <nav>
+                <nav className="max-[943px]:hidden">
                     <ul className="flex items-center gap-x-10">
                         <li className="relative w-fit">
                             <Link href="/" className="text-[#0F4C81]">Home</Link>
@@ -56,7 +164,7 @@ export default function Header() {
                 </nav>
 
                 {/* actions */}
-                <div className="flex items-center gap-x-4">
+                <div className="flex items-center gap-x-4 max-[943px]:hidden">
                     <Link href="/" className="text-[#0F4C81] bg-[#A7C7E7] py-2 px-2 rounded-full">
                         <Heart size={20} />
                     </Link>
@@ -66,6 +174,17 @@ export default function Header() {
                     <Link href="/" className="text-[#0F4C81] bg-[#A7C7E7] py-2 px-2 rounded-full">
                         <Search size={20} />
                     </Link>
+                </div>
+
+                {/* mobile nav button */}
+                <div className="hidden max-[943px]:block flex-shrink-0">
+                    <button
+                        type="button"
+                        className="cursor-pointer text-[#0F4C81]"
+                        onClick={() => setIsMobileNavOpen(true)}
+                    >
+                        <RiMenu4Line size={30} />
+                    </button>
                 </div>
 
             </div>
