@@ -2,6 +2,7 @@ import { ArrowLeft, ArrowRight, Heart } from "lucide-react";
 import { berkshireSwash } from "./layout";
 import Image from "next/image";
 import Link from "next/link";
+import SignupNewsLetter from "./signup-news-letter";
 
 export default function Home() {
     return (
@@ -18,7 +19,7 @@ export default function Home() {
                     <div className="relative grid grid-cols-2 size-full place-content-center px-10 z-50">
                         <div className="space-y-3 text-white">
                             <h1 className={`${berkshireSwash.className} text-5xl leading-tight capitalize text-white`}>“...because cake deserves its own moment”</h1>
-                            <p className="text-lg">Discover luxury cakes, handcrafted to celebrate life’s sweetest moments</p>
+                            <p className="text-lg">Discover luxury cakes, handcrafted to celebrate life's sweetest moments</p>
                             <Link href="/taster-box/inquiry" className="bg-[#E04F85] text-white py-3 px-8 mt-3 rounded-3xl flex items-center gap-x-2 w-fit">
                                 Order now
                                 <Heart size={20} className="size-5" />
@@ -215,7 +216,7 @@ export default function Home() {
                                 <ArrowLeft size={20} />
                             </button>
                             <p className="flex-1 text-[#0F4C81] max-w-[40rem] mx-auto mt-12 text-center">
-                                “A pretty cake with great sponge! It was so moist!!! Everyone loved itt! Thank you so much again”
+                                "A pretty cake with great sponge! It was so moist!!! Everyone loved itt! Thank you so much again"
                                 <span className="font-bold text-[#0F4C81] mt-10">M.K</span>
                             </p>
                             <button className="bg-[#0F4C81] text-white py-2 px-2 rounded-3xl flex items-center gap-x-2 w-fit">
@@ -233,20 +234,7 @@ export default function Home() {
                 </div>
             </section>
 
-            <section>
-                <div className="max-w-[50rem] mx-auto py-12 px-3">
-                    <h1 className={`${berkshireSwash.className} text-center text-3xl leading-tight capitalize text-[#E04F85]`}>
-                        Get sweet deals and updates!
-                    </h1>
-                    <p className="text-[#0F4C81] max-w-[40rem] mx-auto mt-3">
-                        Be the first to know about new products, discounts and what’s happening in Hegai Cakes
-                    </p>
-                    <div className="flex items-center mt-10 border border-[#0F4C81] rounded-full">
-                        <input type="text" name="" id="" placeholder="Enter your email" className="w-full p-2 rounded-3xl focus:border-none focus:outline-none" />
-                        <button className="bg-[#0F4C81] text-white py-2 px-8 rounded-r-3xl">Subscribe</button>
-                    </div>
-                </div>
-            </section>
+            <SignupNewsLetter />
         </main>
     );
 }

@@ -65,3 +65,13 @@ export async function getProductById(id: string) {
         throw error;
     }
 }
+
+export async function subscribeToNewsletter(email: string) {
+    try {
+        const record = await pb.collection("newsletter").create({ email });
+        return record;
+    } catch (error) {
+        console.error("Error subscribing to newsletter:", error);
+        throw error;
+    }
+}
