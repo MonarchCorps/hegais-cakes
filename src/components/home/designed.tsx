@@ -9,7 +9,7 @@ import Link from "next/link";
 export default function Designed() {
     return (
         <section>
-            <div className="relative py-12 px-3 max-w-[95%] mx-auto">
+            <div className="relative py-12 px-3 max-w-[100rem] mx-auto">
                 <div className="relative mb-8">
                     <motion.h1
                         initial={{ opacity: 0, y: 30 }}
@@ -29,25 +29,26 @@ export default function Designed() {
                     className="text-center mt-1">
                     Indulge in our delicious offerings—from tasting boxes to workshops, we bring your cake dreams to life.
                 </motion.p>
-                <div className="relative max-w-[75%] mx-auto grid grid-cols-2 gap-x-32 gap-y-10 mb-20 mt-12 text-center place-content-center">
+                <div className="relative max-w-[64rem] mx-auto grid grid-cols-2 gap-x-16 gap-y-10 mb-20 mt-12 text-center place-content-center max-[1044px]:gap-x-5 max-[650px]:grid-cols-1">
 
                     <img
                         src={"/images/cake-1.webp"}
                         alt="Cake 1"
                         className="absolute inset-0 w-full h-auto -z-10"
                     />
+                    
                     <motion.div
                         initial={{ opacity: 0, x: -30 }}
                         transition={{ duration: 0.7 }}
                         whileInView={{ opacity: 1, x: 0 }}
                         viewport={{ once: true, amount: 0.25 }}
                         className="flex flex-col items-center">
-                        <div className="relative w-full h-[30rem]">
+                        <div className="relative w-full h-[30rem] max-[1000px]:h-[20rem]">
                             <Image
                                 src={"/images/tasterbox.webp"}
                                 alt="Tasterbox"
                                 fill
-                                className="size-full object-cover"
+                                className="size-full object-cover  max-[1000px]:object-contain"
                             />
                         </div>
                         <h1 className="text-[#333333] font-700 text-2xl mt-5">Taster Boxes</h1>
@@ -65,12 +66,12 @@ export default function Designed() {
                         whileInView={{ opacity: 1, x: 0 }}
                         viewport={{ once: true, amount: 0.25 }}
                         className="flex flex-col items-center">
-                        <div className="relative w-full h-[30rem]">
+                        <div className="relative w-full h-[30rem] max-[1000px]:h-[20rem]">
                             <Image
                                 src={"/images/wedding-cakes.webp"}
                                 alt="Wedding Cakes"
                                 fill
-                                className="size-full object-cover"
+                                className="size-full object-cover max-[1000px]:object-contain"
                             />
                         </div>
                         <h1 className="text-[#333333] font-700 text-2xl mt-5">Wedding Cakes</h1>
@@ -88,12 +89,12 @@ export default function Designed() {
                         whileInView={{ opacity: 1, x: 0 }}
                         viewport={{ once: true, amount: 0.25 }}
                         className="flex flex-col items-center">
-                        <div className="relative w-full h-[30rem]">
+                        <div className="relative w-full h-[30rem] max-[1000px]:h-[20rem]">
                             <Image
                                 src={"/images/celebration-cakes.webp"}
                                 alt="Celebration Cakes"
                                 fill
-                                className="size-full object-cover"
+                                className="size-full object-cover max-[1000px]:object-contain"
                             />
                         </div>
                         <h1 className="text-[#333333] font-700 text-2xl mt-5">Celebration Cakes</h1>
@@ -111,12 +112,12 @@ export default function Designed() {
                         whileInView={{ opacity: 1, x: 0 }}
                         viewport={{ once: true, amount: 0.25 }}
                         className="flex flex-col items-center">
-                        <div className="relative w-full h-[30rem]">
+                        <div className="relative w-full h-[30rem] max-[1000px]:h-[20rem]">
                             <Image
                                 src={"/images/workshops.webp"}
                                 alt="Workshops"
                                 fill
-                                className="size-full object-cover"
+                                className="size-full object-cover max-[1000px]:object-contain"
                             />
                         </div>
                         <h1 className="text-[#333333] font-700 text-2xl mt-5">Workshops</h1>
