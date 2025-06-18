@@ -1,0 +1,108 @@
+import { Facebook, Instagram, Mail, MapPin, Phone } from "lucide-react";
+import Image from "next/image";
+import Link from "next/link";
+
+export default function Footer() {
+    return (
+        <footer>
+            <div className="bg-[#A7C7E7] pt-14 pb-8 px-3">
+                <div className="grid grid-cols-4 max-w-[95%] mx-auto">
+
+                    <div>
+                        <div className="relative size-24">
+                            <Image
+                                src="/images/logo.webp"
+                                alt="Hegai Cakes Logo"
+                                fill
+                                className="size-full object-cover"
+                            />
+                        </div>
+                        <div className="flex items-center gap-x-2">
+                            <a href="" className="bg-[#0F4C81] text-white py-2 px-2 rounded-full">
+                                <Instagram size={16} />
+                            </a>
+                            <a href="" className="bg-[#0F4C81] text-white py-2 px-2 rounded-full">
+                                <Facebook size={16} />
+                            </a>
+                        </div>
+                    </div>
+
+                    <div className="space-y-5">
+                        <div className="space-y-2">
+                            <h1 className="text-[#0F4C81] font-bold text-xl mb-2.5">Contact Us</h1>
+                            <div className="flex items-center gap-x-2 text-[#0F4C81]">
+                                <Phone size={16} />
+                                <a href="tel:+447721497297">+44 7721 497297</a>
+                            </div>
+                            <div className="flex items-center gap-x-2 text-[#0F4C81]">
+                                <Mail size={16} />
+                                <a href="mailto:occasions@hegaicakes.com">occasions@hegaicakes.com</a>
+                            </div>
+                        </div>
+
+                        <div className="space-y-2">
+                            <h1 className="text-[#0F4C81] font-bold text-xl mb-2.5">Location</h1>
+                            <div className="flex items-center gap-x-2 text-[#0F4C81]">
+                                <MapPin size={16} />
+                                <p>Ickenham, West London, UK</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div>
+                        <h1 className="text-[#0F4C81] font-bold text-xl mb-2.5">Quick Links</h1>
+                        <ul className="space-y-2">
+                            <li>
+                                <Link href="/" className="text-[#0F4C81]">Book a Consultation</Link>
+                            </li>
+                            <li>
+                                <Link href="/" className="text-[#0F4C81]">Shop</Link>
+                            </li>
+                            <li>
+                                <Link href="/" className="text-[#0F4C81]">Taster Box Inquiry</Link>
+                            </li>
+                            <li>
+                                <Link href="/" className="text-[#0F4C81]">Shipping & Refund Policy</Link>
+                            </li>
+                            <li>
+                                <Link href="/" className="text-[#0F4C81]">Privacy Policy</Link>
+                            </li>
+
+                        </ul>
+                    </div>
+
+                    <div>
+                        <h1 className="text-[#0F4C81] font-bold text-xl mb-2.5">We accept</h1>
+                        <div className="flex items-center gap-x-3">
+                            <img
+                                src="/images/paypal.png"
+                                alt="Paypal"
+                                width={50}
+                                height={50}
+                            />
+                            <img
+                                src="/images/visa.png"
+                                alt="Visa"
+                                width={50}
+                                height={50}
+                            />
+                            <img
+                                src="/images/mastercard.png"
+                                alt="Mastercard"
+                                width={50}
+                                height={50}
+                            />
+                        </div>
+                    </div>
+                </div>
+                <div className="mt-10 pt-6 border-t border-[#0F4C81]">
+                    <div className="max-w-[95%] mx-auto">
+                        <p className="text-[#0F4C81] text-center">
+                            Copyright © 2025 Hegai Cakes. All rights reserved.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    );
+}
