@@ -136,7 +136,7 @@ export default function WeddingCakesCatalogue() {
 
             <section>
                 <div>
-                    <div className="relative h-[70vh]">
+                    <div className="relative h-[40rem]">
                         <div className="absolute inset-0 size-full bg-black/50"></div>
                         <div className="relative size-full">
                             <Image
