@@ -224,11 +224,16 @@ export default function TasterBoxContent() {
 
                     <div className="relative py-12 max-w-[70rem] mx-auto">
 
-                        <div className="relative mb-12">
-                            <h1 className={`${berkshireSwash.className} text-center text-3xl leading-tight capitalize text-[#E04F85]`}>
-                                Taster Box subscription
-                            </h1>
-                            <span className="absolute -bottom-3 left-1/2 -translate-x-1/2 w-[10rem] h-1 bg-[#E04F85]"></span>
+                        <div className="mb-12">
+                            <div className="relative mb-6">
+                                <h1 className={`${berkshireSwash.className} text-center text-3xl leading-tight capitalize text-[#E04F85]`}>
+                                    Taster Box subscription
+                                </h1>
+                                <span className="absolute -bottom-3 left-1/2 -translate-x-1/2 w-[10rem] h-1 bg-[#E04F85]"></span>
+                            </div>
+                            <p className="text-center text-lg text-[#E04F85]">
+                                Discover New flavours, and experience perfect bite-sized delights delivered to your doorstep
+                            </p>
                         </div>
 
                         <div className="grid grid-cols-2 gap-x-4 gap-y-4 items-center max-[983px]:grid-cols-1 justify-items-center max-[983px]:px-5">
