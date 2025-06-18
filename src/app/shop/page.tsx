@@ -5,7 +5,7 @@ import { ArrowRight } from "lucide-react";
 import { getProducts } from "@/http";
 import { stripHtml } from "@/utils";
 
-interface Product {
+export interface Product {
     collectionId: string;
     collectionName: string;
     created: string;
@@ -22,7 +22,7 @@ interface Product {
 
 export default async function ShopPage() {
     const products: Product[] = await getProducts();
-    
+
     return (
         <main>
             {/* Header Section */}
