@@ -145,13 +145,13 @@ export default function WeddingCakesCatalogue() {
                                 fill
                                 className="absolute inset-0 size-full object-cover object-bottom-right -z-10"
                             />
-                            <div className="absolute inset-0 flex flex-col items-center justify-center">
+                            <div className="absolute inset-0 flex flex-col items-center justify-center px-1">
                                 <motion.h1
                                     initial={{ opacity: 0, y: 10 }}
                                     transition={{ duration: 0.7 }}
                                     whileInView={{ opacity: 1, y: 0 }}
                                     viewport={{ once: true }}
-                                    className={`${berkshireSwash.className} text-center text-7xl leading-tight capitalize text-white`}>
+                                    className={`${berkshireSwash.className} text-center text-7xl leading-tight capitalize text-white max-[835px]:text-5xl mb-3`}>
                                     Wedding Cake Catalogue
                                 </motion.h1>
                                 <motion.p
@@ -159,7 +159,7 @@ export default function WeddingCakesCatalogue() {
                                     transition={{ duration: 0.7 }}
                                     whileInView={{ opacity: 1, y: 0 }}
                                     viewport={{ once: true }}
-                                    className="text-white text-center text-lg max-w-[44rem] mx-auto">
+                                    className="text-white text-center text-lg max-w-[44rem] mx-auto max-[835px]:text-base mb-2">
                                     A showcase of our past clients’ dream cake- the flavours, photographers & venues that made their day special
                                 </motion.p>
 
