@@ -7,7 +7,6 @@ export default function BakingWorkshop() {
     return (
         <main>
 
-
             <section>
                 <div>
                     <div className="relative h-[70vh]">
