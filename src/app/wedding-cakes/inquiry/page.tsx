@@ -83,14 +83,14 @@ export default function WeddingCakesInquiry() {
             </section>
 
             <section>
-                <div className="max-w-[55rem] mx-auto py-12 px-3">
+                <div className="max-w-[55rem] mx-auto py-12 px-5">
                     <div className="border-b-[2px] border-[#D9D9D9] pb-8">
                         <h1 className="text-[#0F4C81] font-bold text-3xl">Inquiry Form</h1>
                     </div>
 
                     <form onSubmit={formik.handleSubmit} className="flex flex-col gap-5 py-7">
                         <div className="flex flex-col gap-y-3">
-                            <label htmlFor="wedding_date" className="font-medium text-[#333333] text-[18px]">Wedding Date:</label>
+                            <label htmlFor="wedding_date" className="font-medium text-[#333333] text-[18px] max-[510px]:text-base">Wedding Date:</label>
                             <input
                                 type="date"
                                 id="wedding_date"
@@ -103,7 +103,7 @@ export default function WeddingCakesInquiry() {
                         </div>
 
                         <div className="flex flex-col gap-y-3">
-                            <label htmlFor="wedding_venue" className="font-medium text-[#333333] text-[18px]">Wedding Venue:</label>
+                            <label htmlFor="wedding_venue" className="font-medium text-[#333333] text-[18px] max-[510px]:text-base">Wedding Venue:</label>
                             <input
                                 type="text"
                                 id="wedding_venue"
@@ -116,7 +116,7 @@ export default function WeddingCakesInquiry() {
                         </div>
 
                         <div className="flex flex-col gap-y-3">
-                            <label htmlFor="number_of_tiers" className="font-medium text-[#333333] text-[18px]">Number of Tiers:</label>
+                            <label htmlFor="number_of_tiers" className="font-medium text-[#333333] text-[18px] max-[510px]:text-base">Number of Tiers:</label>
                             <input
                                 type="text"
                                 id="number_of_tiers"
@@ -129,7 +129,7 @@ export default function WeddingCakesInquiry() {
                         </div>
 
                         <div className="flex flex-col gap-y-3">
-                            <label htmlFor="number_of_guests" className="font-medium text-[#333333] text-[18px]">Number of Guests:</label>
+                            <label htmlFor="number_of_guests" className="font-medium text-[#333333] text-[18px] max-[510px]:text-base">Number of Guests:</label>
                             <input
                                 type="text"
                                 id="number_of_guests"
@@ -142,8 +142,8 @@ export default function WeddingCakesInquiry() {
                         </div>
 
                         <div className="flex flex-col gap-y-3">
-                            <label htmlFor="dietary_needs" className="font-medium text-[#333333] text-[18px]">Dietary Needs:</label>
-                            <div className="flex items-center space-x-4">
+                            <label htmlFor="dietary_needs" className="font-medium text-[#333333] text-[18px] max-[510px]:text-base">Dietary Needs:</label>
+                            <div className="flex flex-wrap items-center gap-y-2 gap-x-4">
                                 <div className="flex items-center gap-x-2">
                                     <input
                                         type="radio"
@@ -156,7 +156,7 @@ export default function WeddingCakesInquiry() {
                                             formik.setFieldValue("dietary_needs", "Gluten-Free");
                                         }}
                                     />
-                                    <label htmlFor="gluten_free" className="font-medium text-[#333333] text-[18px]">Gluten-Free</label>
+                                    <label htmlFor="gluten_free" className="font-medium text-[#333333] text-[18px] max-[510px]:text-base">Gluten-Free</label>
                                 </div>
                                 <div className="flex items-center gap-x-2">
                                     <input
@@ -170,7 +170,7 @@ export default function WeddingCakesInquiry() {
                                             formik.setFieldValue("dietary_needs", "Vegan");
                                         }}
                                     />
-                                    <label htmlFor="vegan" className="font-medium text-[#333333] text-[18px]">Vegan</label>
+                                    <label htmlFor="vegan" className="font-medium text-[#333333] text-[18px] max-[510px]:text-base">Vegan</label>
                                 </div>
                                 <div className="flex items-center gap-x-2">
                                     <input
@@ -184,7 +184,7 @@ export default function WeddingCakesInquiry() {
                                             formik.setFieldValue("dietary_needs", "");
                                         }}
                                     />
-                                    <label htmlFor="other" className="font-medium text-[#333333] text-[18px]">Other (Please Specify)</label>
+                                    <label htmlFor="other" className="font-medium text-[#333333] text-[18px] max-[510px]:text-base">Other (Please Specify)</label>
                                 </div>
                             </div>
                             {dietaryOption === "Other" && (
@@ -203,7 +203,7 @@ export default function WeddingCakesInquiry() {
                         </div>
 
                         <div className="flex flex-col gap-y-3">
-                            <label htmlFor="cake_flavours" className="font-medium text-[#333333] text-[18px]">Cake Flavours:</label>
+                            <label htmlFor="cake_flavours" className="font-medium text-[#333333] text-[18px] max-[510px]:text-base">Cake Flavours:</label>
                             <input
                                 type="text"
                                 id="cake_flavours"
@@ -217,7 +217,7 @@ export default function WeddingCakesInquiry() {
 
 
                         <div className="flex flex-col gap-y-3">
-                            <label htmlFor="design_inspiration" className="font-medium text-[#333333] text-[18px]">Design Inspiration (Upload any reference photos)</label>
+                            <label htmlFor="design_inspiration" className="font-medium text-[#333333] text-[18px] max-[510px]:text-base">Design Inspiration (Upload any reference photos)</label>
                             <input
                                 type="file"
                                 id="design_inspiration"
@@ -229,7 +229,7 @@ export default function WeddingCakesInquiry() {
                         </div>
 
                         <div className="flex flex-col gap-y-3">
-                            <label htmlFor="couple_name" className="font-medium text-[#333333] text-[18px]">Couples&apos; Names:</label>
+                            <label htmlFor="couple_name" className="font-medium text-[#333333] text-[18px] max-[510px]:text-base">Couples&apos; Names:</label>
                             <input
                                 type="text"
                                 id="couple_name"
@@ -242,7 +242,7 @@ export default function WeddingCakesInquiry() {
                         </div>
 
                         <div className="flex flex-col gap-y-3">
-                            <label htmlFor="email" className="font-medium text-[#333333] text-[18px]">Email Address:</label>
+                            <label htmlFor="email" className="font-medium text-[#333333] text-[18px] max-[510px]:text-base">Email Address:</label>
                             <input
                                 type="email"
                                 id="email"
@@ -255,7 +255,7 @@ export default function WeddingCakesInquiry() {
                         </div>
 
                         <div className="flex flex-col gap-y-3">
-                            <label htmlFor="phone_number" className="font-medium text-[#333333] text-[18px]">Phone Number:</label>
+                            <label htmlFor="phone_number" className="font-medium text-[#333333] text-[18px] max-[510px]:text-base">Phone Number:</label>
                             <input
                                 type="tel"
                                 id="phone_number"
@@ -268,7 +268,7 @@ export default function WeddingCakesInquiry() {
                         </div>
 
                         <div className="flex flex-col gap-y-3">
-                            <label htmlFor="additional_details" className="font-medium text-[#333333] text-[18px]">Additional Details or Special Requests:</label>
+                            <label htmlFor="additional_details" className="font-medium text-[#333333] text-[18px] max-[510px]:text-base">Additional Details or Special Requests:</label>
                             <textarea
                                 id="additional_details"
                                 name="additional_details"

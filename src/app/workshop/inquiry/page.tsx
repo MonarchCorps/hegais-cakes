@@ -77,13 +77,13 @@ export default function BookWorkshopInquiryPage() {
             </section>
 
             <section>
-                <div className="max-w-[55rem] mx-auto py-12 px-3">
+                <div className="max-w-[55rem] mx-auto py-12 px-5">
                     <div className="border-b-[2px] border-[#D9D9D9] pb-8">
                         <h1 className="text-[#0F4C81] font-bold text-3xl">Contact Us</h1>
                     </div>
                     <form onSubmit={formik.handleSubmit} className="flex flex-col gap-5 py-7">
                         <div className="flex flex-col gap-y-3">
-                            <label htmlFor="full_name" className="font-medium text-[#333333] text-[18px]">Full Name/Company Name:</label>
+                            <label htmlFor="full_name" className="font-medium text-[#333333] text-[18px] max-[510px]:text-base">Full Name/Company Name:</label>
                             <input
                                 type="text"
                                 id="full_name"
@@ -95,7 +95,7 @@ export default function BookWorkshopInquiryPage() {
                             />
                         </div>
                         <div className="flex flex-col gap-y-3">
-                            <label htmlFor="email" className="font-medium text-[#333333] text-[18px]">Email Address:</label>
+                            <label htmlFor="email" className="font-medium text-[#333333] text-[18px] max-[510px]:text-base">Email Address:</label>
                             <input
                                 type="email"
                                 id="email"
@@ -107,7 +107,7 @@ export default function BookWorkshopInquiryPage() {
                             />
                         </div>
                         <div className="flex flex-col gap-y-3">
-                            <label htmlFor="phone_number" className="font-medium text-[#333333] text-[18px]">Phone Number:</label>
+                            <label htmlFor="phone_number" className="font-medium text-[#333333] text-[18px] max-[510px]:text-base">Phone Number:</label>
                             <input
                                 type="tel"
                                 id="phone_number"
@@ -119,7 +119,7 @@ export default function BookWorkshopInquiryPage() {
                             />
                         </div>
                         <div className="flex flex-col gap-y-3">
-                            <label htmlFor="number_of_participants" className="font-medium text-[#333333] text-[18px]">How many participants? (Exact number):</label>
+                            <label htmlFor="number_of_participants" className="font-medium text-[#333333] text-[18px] max-[510px]:text-base">How many participants? (Exact number):</label>
                             <input
                                 type="number"
                                 id="number_of_participants"
@@ -131,7 +131,7 @@ export default function BookWorkshopInquiryPage() {
                             />
                         </div>
                         <div className="flex flex-col gap-y-3">
-                            <label htmlFor="preferred_date" className="font-medium text-[#333333] text-[18px]">Preferred Date:</label>
+                            <label htmlFor="preferred_date" className="font-medium text-[#333333] text-[18px] max-[510px]:text-base">Preferred Date:</label>
                             <input
                                 type="date"
                                 id="preferred_date"
@@ -143,7 +143,7 @@ export default function BookWorkshopInquiryPage() {
                             />
                         </div>
                         <div className="flex flex-col gap-y-3">
-                            <label htmlFor="type_and_flavour" className="font-medium text-[#333333] text-[18px]">What type of cake would you like to bake? (Type/Flavour):</label>
+                            <label htmlFor="type_and_flavour" className="font-medium text-[#333333] text-[18px] max-[510px]:text-base">What type of cake would you like to bake? (Type/Flavour):</label>
                             <input
                                 type="text"
                                 id="type_and_flavour"
@@ -155,7 +155,7 @@ export default function BookWorkshopInquiryPage() {
                             />
                         </div>
                         <div className="flex flex-col gap-y-3">
-                            <label htmlFor="desired_outcome" className="font-medium text-[#333333] text-[18px]">Desired Outcome:</label>
+                            <label htmlFor="desired_outcome" className="font-medium text-[#333333] text-[18px] max-[510px]:text-base">Desired Outcome:</label>
                             <textarea
                                 id="desired_outcome"
                                 name="desired_outcome"
@@ -167,7 +167,7 @@ export default function BookWorkshopInquiryPage() {
                             />
                         </div>
                         <div className="flex flex-col gap-y-3">
-                            <label htmlFor="additional_details" className="font-medium text-[#333333] text-[18px]">Additional Details or Questions:</label>
+                            <label htmlFor="additional_details" className="font-medium text-[#333333] text-[18px] max-[510px]:text-base">Additional Details or Questions:</label>
                             <textarea
                                 id="additional_details"
                                 name="additional_details"
