@@ -7,7 +7,7 @@ import { usePathname } from "next/navigation";
 import { RiMenu4Line } from "react-icons/ri";
 import { RxCross2 } from "react-icons/rx";
 import { GoSearch } from "react-icons/go";
-import { startTransition, useState } from "react";
+import { startTransition, useState, useEffect } from "react";
 
 const mobileNavLinks = [
     {
@@ -41,6 +41,11 @@ export default function Header() {
     const [isMobileNavOpen, setIsMobileNavOpen] = useState(false);
     const pathname = usePathname();
     const [searchFilter, setSearchFilter] = useState("");
+
+    // Close mobile nav on route change
+    useEffect(() => {
+        setIsMobileNavOpen(false);
+    }, [pathname]);
 
     const handleFilterSearchNav = (e: React.ChangeEvent<HTMLInputElement>) => {
         const value = e.target.value;
