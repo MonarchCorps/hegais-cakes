@@ -9,7 +9,7 @@ import Link from "next/link";
 export default function Designed() {
     return (
         <section>
-            <div className="relative py-12 px-3 max-w-[100rem] mx-auto">
+            <div className="relative pt-12 pb-1 px-3 max-w-[100rem] mx-auto">
                 <div className="relative mb-8">
                     <motion.h1
                         initial={{ opacity: 0, y: 30 }}

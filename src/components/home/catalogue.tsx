@@ -9,20 +9,20 @@ import { motion } from "framer-motion";
 export default function Catalogue() {
     return (
         <section>
-            <div className="relative bg-[#A7C7E7] py-8 px-4 overflow-hidden">
+            <div className="relative bg-[#A7C7E7] py-8 overflow-hidden">
 
                 {/* center images */}
 
                 <img
                     src="/images/cupcake-blue.png"
                     alt="Cupcake Blue"
-                    className="absolute rotate-[30deg] left-1/2 -translate-x-1/2 -top-16 size-[15rem] object-contain"
+                    className="absolute rotate-[30deg] left-1/2 -translate-x-1/2 -top-16 size-[15rem] object-contain max-[1061px]:size-[10rem]"
                 />
 
                 <img
                     src="/images/cupcake-blue.png"
                     alt="Cupcake Blue"
-                    className="absolute rotate-[30deg] left-1/2 -translate-x-1/2 -bottom-16 size-[15rem] object-contain"
+                    className="absolute rotate-[30deg] left-1/2 -translate-x-1/2 -bottom-16 size-[15rem] object-contain max-[1061px]:size-[10rem]"
                 />
 
 
@@ -31,13 +31,13 @@ export default function Catalogue() {
                 <img
                     src="/images/cupcake-blue.png"
                     alt="Cupcake Blue"
-                    className="absolute rotate-[2deg] top-[-3%] -right-16 size-[13rem] object-contain"
+                    className="absolute rotate-[2deg] top-[-3%] -right-16 size-[13rem] object-contain max-[1061px]:size-[10rem] max-[711px]:size-[7rem]"
                 />
 
                 <img
                     src="/images/cupcake-blue.png"
                     alt="Cupcake Blue"
-                    className="absolute rotate-[38deg] top-[-3%] -left-16 size-[13rem] object-contain"
+                    className="absolute rotate-[38deg] top-[-3%] -left-16 size-[13rem] object-contain max-[1061px]:size-[10rem] max-[711px]:size-[7rem]"
                 />
 
 
@@ -46,13 +46,13 @@ export default function Catalogue() {
                 <img
                     src="/images/cupcake-blue.png"
                     alt="Cupcake Blue"
-                    className="absolute rotate-[38deg] top-[32%] -right-16 size-[13rem] object-contain"
+                    className="absolute rotate-[38deg] top-[32%] -right-16 size-[13rem] object-contain max-[1061px]:size-[10rem] max-[711px]:size-[7rem]"
                 />
 
                 <img
                     src="/images/cupcake-blue.png"
                     alt="Cupcake Blue"
-                    className="absolute rotate-[-2deg] top-[32%] -left-16 size-[13rem] object-contain"
+                    className="absolute rotate-[-2deg] top-[32%] -left-16 size-[13rem] object-contain max-[1061px]:size-[10rem] max-[711px]:size-[7rem]"
                 />
 
 
@@ -61,16 +61,16 @@ export default function Catalogue() {
                 <img
                     src="/images/cupcake-blue.png"
                     alt="Cupcake Blue"
-                    className="absolute rotate-[-3deg] -bottom-14 -right-16 size-[13rem] object-contain"
+                    className="absolute rotate-[-3deg] -bottom-14 -right-16 size-[13rem] object-contain max-[1061px]:size-[10rem] max-[711px]:size-[7rem]"
                 />
                 <img
                     src="/images/cupcake-blue.png"
                     alt="Cupcake Blue"
-                    className="absolute rotate-[40deg] -bottom-14 -left-16 size-[13rem] object-contain"
+                    className="absolute rotate-[40deg] -bottom-14 -left-16 size-[13rem] object-contain max-[1061px]:size-[10rem] max-[711px]:size-[7rem]"
                 />
 
 
-                <div className="relative py-12 px-3 max-w-[95%] mx-auto">
+                <div className="relative py-12 max-w-[95%] mx-auto">
                     <div className="relative mb-8">
                         <motion.h1
                             initial={{ opacity: 0, y: 30 }}
@@ -90,7 +90,7 @@ export default function Catalogue() {
                         className="text-center mt-1 text-[#0F4C81] max-w-[35rem] mx-auto">
                         Your dream cake, one click away! Find the perfect treat for birthdays, weddings, and every sweet tooth in between.
                     </motion.p>
-                    <div className="grid grid-cols-4 gap-x-8 gap-y-4 mt-10 mb-10">
+                    <div className="flex items-center gap-x-4 gap-y-4 mt-10 mb-10 overflow-x-scroll scrollbar-hide">
                         {[
                             { src: "/images/cake-2.webp", alt: "Cake 2" },
                             { src: "/images/cake-3.webp", alt: "Cake 3" },
@@ -101,7 +101,7 @@ export default function Catalogue() {
                                 key={cake.alt}
                                 src={cake.src}
                                 alt={cake.alt}
-                                className="size-full object-cover"
+                                className="object-cover min-w-[18rem] min-h-[20rem]"
                                 initial={{ opacity: 0, y: 40 }}
                                 whileInView={{ opacity: 1, y: 0 }}
                                 transition={{ duration: 0.7, delay: idx * 0.15 }}
