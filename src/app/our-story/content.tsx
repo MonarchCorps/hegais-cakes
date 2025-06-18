@@ -5,7 +5,7 @@ import { berkshireSwash } from "@/lib/fonts";
 
 export default function OurStoryContent() {
     return (
-        <main>
+        <main className="overflow-x-hidden">
 
             <section>
                 <div>
