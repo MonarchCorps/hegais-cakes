@@ -6,7 +6,7 @@ export default function Footer() {
     return (
         <footer>
             <div className="bg-[#A7C7E7] pt-14 pb-8 px-3">
-                <div className="grid grid-cols-4 max-w-[95%] mx-auto">
+                <div className="grid grid-cols-[repeat(auto-fit,minmax(200px,1fr))] gap-x-10 gap-y-8 max-w-[95%] mx-auto max-[487px]:px-4">
 
                     <div>
                         <div className="relative size-24">
