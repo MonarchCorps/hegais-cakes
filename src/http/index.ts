@@ -1,4 +1,4 @@
-"use client";
+"use server";
 
 import { TasterBoxInquiryType, WeddingCakeInquiryType, WorkshopInquiryType } from "@/schema";
 import pb from "@/services";
@@ -45,11 +45,16 @@ export async function createWeddingCakeInquiry(data: WeddingCakeInquiryType) {
 
 export async function getProducts() {
     try {
-        const records = await pb.collection("Shop").getFullList({
-            sort: "-created", // or "name" or any field
-        });
-
-        return records;
+        // Use fetch with Next.js revalidation
+        const res = await fetch(
+            "https://orca-app-h75k3.ondigitalocean.app/api/collections/Shop/records",
+            {
+                next: { revalidate: 60 },
+            }
+        );
+        if (!res.ok) throw new Error("Failed to fetch products");
+        const data = await res.json();
+        return data.items;
     } catch (error) {
         console.error("Error fetching products:", error);
         throw error;
