@@ -15,7 +15,7 @@ export default function SignupNewsLetter() {
                     Get sweet deals and updates!
                 </h1>
                 <p className="text-[#0F4C81] max-w-[40rem] mx-auto mt-3">
-                    Be the first to know about new products, discounts and what's happening in Hegai Cakes
+                    Be the first to know about new products, discounts and what&apos;s happening in Hegai Cakes
                 </p>
                 <form
                     className="flex items-center mt-10 border border-[#0F4C81] rounded-full"
@@ -27,7 +27,7 @@ export default function SignupNewsLetter() {
                             await subscribeToNewsletter(newsletterEmail);
                             setNewsletterMessage("Subscribed successfully! 🎉");
                             setNewsletterEmail("");
-                        } catch (err) {
+                        } catch  {
                             setNewsletterMessage("Subscription failed. Please try again.");
                         } finally {
                             setNewsletterLoading(false);

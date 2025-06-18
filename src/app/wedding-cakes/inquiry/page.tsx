@@ -62,7 +62,7 @@ export default function WeddingCakesInquiry() {
                                     Wedding Cake Inquiry
                                 </h1>
                                 <p className="text-white text-center text-lg max-w-[44rem] mx-auto">
-                                    Every wedding deserves a showstopping cake. Let's design yours together.
+                                    Every wedding deserves a showstopping cake. Let&apos;s design yours together.
                                 </p>
                             </div>
                         </div>
@@ -295,7 +295,7 @@ export default function WeddingCakesInquiry() {
                         {/* Couple's Names */}
                         <div className="mt-5">
                             <label className="block text-[#0F4C81] font-medium mb-1" htmlFor="couple_name">
-                                Couple's Names:
+                                Couples&apos; Names:
                             </label>
                             <input
                                 id="couple_name"

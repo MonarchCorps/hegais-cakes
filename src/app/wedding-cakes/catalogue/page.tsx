@@ -1,5 +1,5 @@
 import { berkshireSwash } from "@/app/layout";
-import { Banana, Carrot, Heart } from "lucide-react";
+import {  Heart } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 

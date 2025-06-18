@@ -62,7 +62,7 @@ export default function TasterBoxInquiry() {
                                     Taster Box Inquiry
                                 </h1>
                                 <p className="text-white text-center text-lg max-w-[44rem] mx-auto">
-                                    Every cake is as unique as the occasion it celebrates. Let's craft yours together.
+                                    Every cake is as unique as the occasion it celebrates. Let&apos;s craft yours together.
                                 </p>
                             </div>
                         </div>

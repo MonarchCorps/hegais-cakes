@@ -57,7 +57,7 @@ export default function BookWorkshopInquiryPage() {
                                     Book A Workshop
                                 </h1>
                                 <p className="text-white text-center text-lg max-w-[44rem] mx-auto">
-                                    Let's make memories! Learn, create, and celebrate with us. Book your spot and bring your cake dreams to life.
+                                    Let&apos;s make memories! Learn, create, and celebrate with us. Book your spot and bring your cake dreams to life.
                                 </p>
                             </div>
                         </div>
