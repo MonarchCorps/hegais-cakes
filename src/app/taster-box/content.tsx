@@ -222,7 +222,7 @@ export default function TasterBoxContent() {
                         className="absolute rotate-[40deg] -bottom-14 -left-16 size-[13rem] object-contain max-[1061px]:size-[10rem] max-[711px]:size-[7rem]"
                     />
 
-                    <div className="relative py-12 max-w-[95%] mx-auto">
+                    <div className="relative py-12 max-w-[70rem] mx-auto">
 
                         <div className="relative mb-12">
                             <h1 className={`${berkshireSwash.className} text-center text-3xl leading-tight capitalize text-[#E04F85]`}>
