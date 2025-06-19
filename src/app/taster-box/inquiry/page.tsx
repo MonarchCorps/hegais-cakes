@@ -44,7 +44,6 @@ export default function TasterBoxInquiry() {
         },
     });
 
-
     return (
         <main>
 
@@ -149,6 +148,12 @@ export default function TasterBoxInquiry() {
                                 value={formik.values.no_of_taster_boxes}
                                 onChange={formik.handleChange}
                                 onBlur={formik.handleBlur}
+                                min={0}
+                                onKeyDown={(e) => {
+                                    if (["e", "E", "+", "-", "."].includes(e.key)) {
+                                        e.preventDefault();
+                                    }
+                                }}
                                 className="w-full border border-[#D9D9D9] py-2.5 px-3 rounded-md font-medium"
                             />
                         </div>
