@@ -17,8 +17,7 @@ export default function ShippingRefundPolicyPage() {
                                 src={"/images/shipping-refund-policy.jpg"}
                                 alt="Shipping & Refund Policy"
                                 fill
-                                className="absolute inset-0 size-full object-cover -z-10 object-[50%_100%
-                                ]"
+                                className="absolute inset-0 size-full object-cover -z-10 object-[50%_50%]"
                             />
                             <div className="absolute inset-0 flex flex-col items-center justify-center px-4">
                                 <motion.h1
