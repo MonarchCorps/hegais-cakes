@@ -1,6 +1,7 @@
 import { Facebook, Instagram, Mail, MapPin, Phone } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
+import { BsTiktok } from "react-icons/bs";
 
 export default function Footer() {
     return (
@@ -20,11 +21,11 @@ export default function Footer() {
                             </Link>
                         </div>
                         <div className="flex items-center gap-x-2">
-                            <a href="" className="bg-[#0F4C81] text-white py-2 px-2 rounded-full">
+                            <a href="https://www.instagram.com/hegaicakes?igsh=MWZ4M3BsMXM0cnd5Yw==" className="bg-[#0F4C81] text-white py-2 px-2 rounded-full">
                                 <Instagram size={16} />
                             </a>
-                            <a href="" className="bg-[#0F4C81] text-white py-2 px-2 rounded-full">
-                                <Facebook size={16} />
+                            <a href="https://www.tiktok.com/@hegaicakes?_t=ZM-8xJGiEmPCYX&_r=1" className="bg-[#0F4C81] text-white py-2 px-2 rounded-full">
+                                <BsTiktok size={16} />
                             </a>
                         </div>
                     </div>
@@ -55,19 +56,19 @@ export default function Footer() {
                         <h1 className="text-[#0F4C81] font-bold text-xl mb-2.5">Quick Links</h1>
                         <ul className="space-y-2">
                             <li>
-                                <Link href="/" className="text-[#0F4C81]">Book a Consultation</Link>
+                                <a target="_blank" href="https://calendly.com/occasions-hegaicakes/30min" className="text-[#0F4C81]">Book a Consultation</a>
                             </li>
                             <li>
-                                <Link href="/" className="text-[#0F4C81]">Shop</Link>
+                                <Link href="/shop" className="text-[#0F4C81]">Shop</Link>
                             </li>
                             <li>
-                                <Link href="/" className="text-[#0F4C81]">Taster Box Inquiry</Link>
+                                <Link href="/taster-box/inquiry" className="text-[#0F4C81]">Taster Box Inquiry</Link>
                             </li>
                             <li>
-                                <Link href="/" className="text-[#0F4C81]">Shipping & Refund Policy</Link>
+                                <Link href="/shopping-policy" className="text-[#0F4C81]">Shipping & Refund Policy</Link>
                             </li>
                             <li>
-                                <Link href="/" className="text-[#0F4C81]">Privacy Policy</Link>
+                                <Link href="/privacy-policy" className="text-[#0F4C81]">Privacy Policy</Link>
                             </li>
 
                         </ul>
