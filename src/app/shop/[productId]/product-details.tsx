@@ -238,7 +238,13 @@ export default function TasterBoxProductDetails({ product }: { product: Product 
 }
 
 
-const ReviewModal = ({ setIsReviewModalOpen }: { setIsReviewModalOpen: (isOpen: boolean) => void }) => {
+const ReviewModal = ({
+    setIsReviewModalOpen,
+    product
+}: {
+    setIsReviewModalOpen: (isOpen: boolean) => void,
+    product: Product
+}) => {
     return (
         <div className='fixed inset-0 bg-black/60 flex justify-center items-center z-[1000]'>
             <div className='max-w-[40rem] w-full py-6 px-7 bg-white max-[530px]:px-4'>
