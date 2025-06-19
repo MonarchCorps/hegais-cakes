@@ -219,7 +219,7 @@ export default function BakingWorkshop() {
 
                     <div className="relative mb-8">
                         <h1 className={`${berkshireSwash.className} w-full text-center text-3xl leading-tight capitalize text-[#0F4C81] inline-flex items-center justify-center gap-x-2`}>
-                            Why It's Worth It
+                            Why It&apos;s Worth It
                             <span className="absolute -bottom-3 left-1/2 -translate-x-1/2 w-[10rem] h-1 bg-[#0F4C81]"></span>
                         </h1>
                     </div>
