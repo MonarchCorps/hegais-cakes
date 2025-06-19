@@ -65,7 +65,7 @@ export default function Footer() {
                                 <Link href="/taster-box/inquiry" className="text-[#0F4C81]">Taster Box Inquiry</Link>
                             </li>
                             <li>
-                                <Link href="/shopping-policy" className="text-[#0F4C81]">Shipping & Refund Policy</Link>
+                                <Link href="/shipping-refund-policy" className="text-[#0F4C81]">Shipping & Refund Policy</Link>
                             </li>
                             <li>
                                 <Link href="/privacy-policy" className="text-[#0F4C81]">Privacy Policy</Link>
