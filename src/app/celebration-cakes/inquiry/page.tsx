@@ -78,7 +78,7 @@ export default function CelebrationCakesInquiry() {
                                     transition={{ duration: 0.7 }}
                                     viewport={{ once: true, amount: 0.25 }}
                                     className="text-white text-center text-lg max-w-[44rem] mx-auto max-[510px]:text-base">
-                                    Every cake is as unique as the occasion it celebrates. Let's craft yours together.
+                                    Every cake is as unique as the occasion it celebrates. Let&apos;s craft yours together.
                                 </motion.p>
                             </div>
                         </div>
