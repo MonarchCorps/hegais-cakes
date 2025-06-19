@@ -99,7 +99,7 @@ export default function Designed() {
                         </div>
                         <h1 className="text-[#333333] font-700 text-2xl mt-5">Celebration Cakes</h1>
                         <p className="text-[#E04F85]">Custom designs to make your special events unforgettable</p>
-                        <Link href="/" className="bg-[#E04F85] text-white py-3 px-8 mt-3 rounded-3xl flex items-center gap-x-2 w-fit">
+                        <Link href="/celebration-cakes" className="bg-[#E04F85] text-white py-3 px-8 mt-3 rounded-3xl flex items-center gap-x-2 w-fit">
                             Learn More
                             <ArrowRight size={20} />
                         </Link>

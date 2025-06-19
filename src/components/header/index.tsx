@@ -24,7 +24,12 @@ const mobileNavLinks = [
     },
     {
         label: "Cakes",
-        href: "/wedding-cakes"
+        href: "/wedding-cakes",
+        isDropdown: true
+    },
+    {
+        label: "Celebration Cakes",
+        href: "/celebration-cakes"
     },
     {
         label: "Workshops",
@@ -39,6 +44,7 @@ const mobileNavLinks = [
 export default function Header() {
     const [mobileLinks, setMobileLinks] = useState(mobileNavLinks);
     const [isMobileNavOpen, setIsMobileNavOpen] = useState(false);
+    const [showCakesDropdown, setShowCakesDropdown] = useState(false);
     const pathname = usePathname();
     const [searchFilter, setSearchFilter] = useState("");
 
@@ -57,6 +63,10 @@ export default function Header() {
             setMobileLinks(filteredLinks);
         });
     };
+
+    useEffect(() => {
+        setShowCakesDropdown(false);
+    }, [pathname]);
 
     return (
         <header className="relative max-[943px]:bg-[#A7C7E7]">
@@ -153,9 +163,38 @@ export default function Header() {
                             <Link href="/taster-box" className="text-[#0F4C81]">Taster Boxes</Link>
                             {pathname === "/taster-box" && <div className="absolute w-full h-[1px] bg-[#0F4C81]"></div>}
                         </li>
-                        <li className="relative w-fit">
-                            <Link href="/wedding-cakes" className="text-[#0F4C81]">Cakes</Link>
-                            {pathname === "/wedding-cakes" && <div className="absolute w-full h-[1px] bg-[#0F4C81]"></div>}
+                        <li className="relative w-fit group">
+                            <button
+                                type="button"
+                                className="cursor-pointer text-[#0F4C81] focus:outline-none"
+                                onClick={() => setShowCakesDropdown((prev) => !prev)}
+                                onBlur={() => setTimeout(() => setShowCakesDropdown(false), 100)}
+                                aria-haspopup="true"
+                                aria-expanded={showCakesDropdown ? "true" : "false"}
+                            >
+                                Cakes
+                            </button>
+                            <ul
+                                className={`absolute left-0 mt-2 w-48 bg-white border border-gray-200 rounded shadow-lg z-[400] transition-all duration-300 ease-out
+                                    ${showCakesDropdown ? 'opacity-100 translate-y-0 pointer-events-auto' : 'opacity-0 -translate-y-2 pointer-events-none'}`}
+                            >
+                                <li>
+                                    <Link
+                                        href="/celebration-cakes"
+                                        className="block px-4 py-2 text-[#0F4C81] hover:bg-gray-100"
+                                    >
+                                        Celebration Cakes
+                                    </Link>
+                                </li>
+                                <li>
+                                    <Link
+                                        href="/wedding-cakes"
+                                        className="block px-4 py-2 text-[#0F4C81] hover:bg-gray-100"
+                                    >
+                                        Wedding Cakes
+                                    </Link>
+                                </li>
+                            </ul>
                         </li>
                         <li className="relative w-fit">
                             <Link href="/workshop" className="text-[#0F4C81]">Workshops</Link>
