@@ -342,7 +342,7 @@ export default function CelebrationCakes() {
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true, amount: 0.25 }}
                             className="text-[#0F4C81] max-w-[40rem] mx-auto">
-                            Swipe through a world of possibilities, and let's design your perfect cake together
+                            Swipe through a world of possibilities, and let&apos;s design your perfect cake together
                         </motion.p>
 
                     </div>
