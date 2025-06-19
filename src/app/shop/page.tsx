@@ -61,7 +61,7 @@ export default async function ShopPage() {
                             />
                             <span className="text-2xl font-semibold">{product.name}</span>
                             <span className="text-xl text-[#50555C] line-clamp-2">{stripHtml(product.description)}</span>
-                            <span className="text-2xl text-[#0F4C81] font-bold">£{product.price}</span>
+                            <span className="text-2xl text-[#0F4C81] font-bold mt-3">£{product.price}</span>
                         </Link>
                     ))}
                 </div>
