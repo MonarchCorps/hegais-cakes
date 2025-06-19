@@ -86,7 +86,7 @@ export const CartPage = ({
                                 (products[item.productId]?.image1 as string) || "";
 
                             return (
-                                <div key={idx} className="border-y border-[#D9D9D9] py-4 grid grid-cols-[15rem_1fr_auto] gap-x-5">
+                                <div key={idx} className="border-y border-[#D9D9D9] py-4 grid grid-cols-[15rem_1fr_auto] gap-x-5 gap-y-5 max-[880px]:grid-cols-[15rem_1fr] max-[572px]:grid-cols-1">
                                     <div className="min-w-full min-h-full">
                                         <img
                                             src={imgSrc}
@@ -115,8 +115,8 @@ export const CartPage = ({
                                             </button>
                                         </div>
                                     </div>
-                                    <div className="flex flex-col justify-between items-end text-end">
-                                        <div>
+                                    <div className="flex flex-col justify-between items-end text-end max-[880px]:col-span-full">
+                                        <div className="mb-5">
                                             <h2 className="text-2xl font-bold text-[#0F4C81]">£ {Number.parseInt(item.price).toLocaleString()}</h2>
                                             <p className="text-[#E04F85]">Shipping & Taxes calculated at checkout</p>
                                         </div>
@@ -134,29 +134,29 @@ export const CartPage = ({
                             );
                         })
                     }
-                    <div className="border-b border-[#D9D9D9] py-4 pb-7 flex items-end gap-x-4">
-                        <div className="flex flex-col gap-y-3 flex-1">
+                    <div className="border-b border-[#D9D9D9] py-4 pb-7 flex items-end gap-x-4 gap-y-3 max-[670px]:flex-col max-[670px]:items-start">
+                        <div className="flex flex-col gap-y-3 flex-1 max-[670px]:w-full">
                             <label
                                 htmlFor="coupon-code"
                                 className="font-medium text-[#333333] text-[18px] max-[510px]:text-base"
                             >Enter Coupon Code</label>
                             <input
                                 type="text"
-                                id="coupon-code"
-                                className="w-full px-3 py-3 border border-[#D9D9D9] rounded-md text-xl font-normal"
+                                // id="coupon-code"
+                                className="w-full px-3 py-3 border border-[#D9D9D9] rounded-md text-xl font-normal max-[670px]:w-full"
                             />
                         </div>
                         <button type="button"
-                            className="bg-[#0F4C85] text-white px-8 py-3 rounded-full text-xl font-normal">
+                            className="bg-[#0F4C85] text-white px-8 py-3 rounded-full text-xl font-normal max-[670px]:w-full">
                             Apply Coupon
                         </button>
                     </div>
-                    <div className="grid grid-cols-2 gap-x-4 items-start mt-10">
-                        <h1 className="flex items-center gap-x-2.5 text-xl font-medium">
+                    <div className="grid grid-cols-2 gap-x-4 items-start mt-10 max-[875]:grid-cols-1">
+                        <h1 className="flex items-center gap-x-2.5 text-xl font-medium max-[875]:hidden">
                             <ArrowLeft size={20} />
                             Continue Shopping
                         </h1>
-                        <div>
+                        <div className="max-w-[40rem]">
                             <h1 className="text-[#0F4C81] font-bold text-2xl">Order Summary</h1>
                             <div className="mt-6 pb-5 border-b border-[#D9D9D9] flex items-center justify-between">
                                 <h1 className="text-xl font-medium">Subtotal</h1>

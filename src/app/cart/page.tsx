@@ -12,36 +12,36 @@ const ShoppingCart = () => {
     const [currentStep, setCurrentStep] = useState(1);
 
     return (
-        <div className='max-w-[75rem] mx-auto pt-12 pb-5'>
-            <div className='w-fit flex items-center gap-x-8'>
+        <div className='max-w-[75rem] mx-auto pt-12 pb-5 px-7 max-[530px]:px-4'>
+            <div className='w-full flex gap-x-8 overflow-x-scroll scrollbar-hide'>
                 <button
                     type='button'
                     onClick={() => setCurrentStep(1)}
-                    className='cursor-pointer flex items-center gap-x-5 text-white border'>
-                    <span className='bg-[#E04F85] size-10 rounded-full flex items-center justify-center'>
+                    className='cursor-pointer flex items-center gap-x-5 text-white border whitespace-nowrap'>
+                    <span className='bg-[#E04F85] size-10 rounded-full flex items-center justify-center max-[572px]:size-8'>
                         <Check color='#fff' />
                     </span>
-                    <p className='text-[#333333] text-xl font-medium'>My Cart</p>
+                    <p className='text-[#333333] text-xl font-medium max-[572px]:text-lg'>My Cart</p>
                     <LiaAngleRightSolid size={20} color='#50555C' />
                 </button>
                 <button
                     type='button'
                     onClick={() => setCurrentStep(2)}
-                    className='cursor-pointer flex items-center gap-x-5 text-white border'>
-                    <span className='bg-[#E04F85] size-10 rounded-full flex items-center justify-center'>
+                    className='cursor-pointer flex items-center gap-x-5 text-white border whitespace-nowrap'>
+                    <span className='bg-[#E04F85] size-10 rounded-full flex items-center justify-center max-[572px]:size-8'>
                         2
                     </span>
-                    <p className='text-[#333333] text-xl font-medium'>Checkout</p>
+                    <p className='text-[#333333] text-xl font-medium max-[572px]:text-lg'>Checkout</p>
                     <LiaAngleRightSolid size={20} color='#50555C' />
                 </button>
                 <button
                     type='button'
                     onClick={() => setCurrentStep(3)}
-                    className='cursor-pointer flex items-center gap-x-5 text-[#333333]'>
-                    <span className='bg-[#FFF] size-10 rounded-full flex items-center justify-center border border-[#D9D9D9]'>
+                    className='cursor-pointer flex items-center gap-x-5 text-[#333333] whitespace-nowrap'>
+                    <span className='bg-[#FFF] size-10 rounded-full flex items-center justify-center border border-[#D9D9D9] max-[572px]:size-8'>
                         3
                     </span>
-                    <p className='text-[#333333] text-xl font-medium'>Order</p>
+                    <p className='text-[#333333] text-xl font-medium max-[572px]:text-lg'>Order</p>
                 </button>
             </div>
             {

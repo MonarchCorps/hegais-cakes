@@ -86,32 +86,32 @@ export const OrderConfirmation = () => (
             alt="Order Confirmation"
             className="size-32 self-center"
         />
-        <h1 className="text-2xl font-bold text-[#0F4C81] self-center">Thank You For Your Order!</h1>
-        <p className="text-2xl font-bold text-[#333333] self-center">Order Summary</p>
+        <h1 className="text-2xl font-bold text-[#0F4C81] self-center max-[530px]:text-xl">Thank You For Your Order!</h1>
+        <p className="text-2xl font-bold text-[#333333] self-center max-[530px]:text-xl">Order Summary</p>
         <div className="mt-5">
             <div className="flex items-center justify-between pb-5 border-b border-[#D9D9D9]">
-                <h1 className="text-xl font-bold">Product</h1>
-                <h1 className="text-xl font-bold">Subtotal</h1>
+                <h1 className="text-xl font-bold max-[530px]:text-lg">Product</h1>
+                <h1 className="text-xl font-bold max-[530px]:text-lg">Subtotal</h1>
             </div>
             <div className="flex items-center justify-between pt-5 pb-5 border-b border-[#D9D9D9]">
                 <div>
-                    <h1 className="text-xl font-medium mb-3">Taster Box (PRE-ORDER) x1</h1>
-                    <p className="text-base text-gray-500 mb-2 ml-5">Add a lovely gift note (optional):</p>
-                    <p className="text-base text-gray-500 ml-5">Pick any four (4) flavours:</p>
+                    <h1 className="text-xl font-medium mb-3 max-[530px]:text-lg">Taster Box (PRE-ORDER) x1</h1>
+                    <p className="text-base text-gray-500 mb-2 ml-5 max-[530px]:text-sm">Add a lovely gift note (optional):</p>
+                    <p className="text-base text-gray-500 ml-5 max-[530px]:text-sm">Pick any four (4) flavours:</p>
                 </div>
-                <h1 className="text-xl font-bold">£40.00</h1>
+                <h1 className="text-xl font-bold max-[530px]:text-lg">£40.00</h1>
             </div>
             <div className="flex items-center justify-between pt-5 pb-5 border-b border-[#D9D9D9]">
-                <h1 className="text-xl font-bold">Subtotal</h1>
-                <h1 className="text-xl font-bold">£40.00</h1>
+                <h1 className="text-xl font-bold max-[530px]:text-lg">Subtotal</h1>
+                <h1 className="text-xl font-bold max-[530px]:text-lg">£40.00</h1>
             </div>
             <div className="flex items-center justify-between pt-5 pb-5 border-b border-[#D9D9D9]">
-                <h1 className="text-xl font-bold">Shipping</h1>
-                <h1 className="text-xl font-bold">Flat Rate: £200.00</h1>
+                <h1 className="text-xl font-bold max-[530px]:text-lg">Shipping</h1>
+                <h1 className="text-xl font-bold max-[530px]:text-lg">Flat Rate: £200.00</h1>
             </div>
             <div className="flex items-center justify-between pt-5 pb-5">
-                <h1 className="text-xl font-bold">Total</h1>
-                <h1 className="text-xl font-bold">£240.00</h1>
+                <h1 className="text-xl font-bold max-[530px]:text-lg">Total</h1>
+                <h1 className="text-xl font-bold max-[530px]:text-lg">£240.00</h1>
             </div>
         </div>
         <p className="text-base text-[#0F4C81] self-center font-600">A confirmation email has been sent to example@email.com</p>

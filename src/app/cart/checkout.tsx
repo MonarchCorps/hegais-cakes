@@ -53,8 +53,8 @@ export function CheckoutPage({
     return (
         <div className="mt-14">
             <h1 className="text-3xl font-bold text-[#0F4C81] mb-8">Checkout</h1>
-            <div className="border-b border-[#D9D9D9] py-4 pb-7 flex items-end gap-x-4">
-                <div className="flex flex-col gap-y-3 flex-1">
+            <div className="border-b border-[#D9D9D9] py-4 pb-7 flex items-end gap-x-4 gap-y-3 max-[670px]:flex-col max-[670px]:items-start">
+                <div className="flex flex-col gap-y-3 flex-1 max-[670px]:w-full">
                     <label
                         htmlFor="coupon-code"
                         className="font-medium text-[#333333] text-[18px] max-[510px]:text-base"
@@ -62,19 +62,19 @@ export function CheckoutPage({
                     <input
                         type="text"
                         id="coupon-code"
-                        className="w-full px-3 py-2 border border-[#D9D9D9] rounded-md text-xl font-normal"
+                        className="w-full px-3 py-2 border border-[#D9D9D9] rounded-md text-xl font-normal max-[670px]:w-full"
                     />
                 </div>
                 <button type="button"
-                    className="bg-[#0F4C85] text-white px-8 py-3 rounded-full text-xl font-normal">
+                    className="bg-[#0F4C85] text-white px-8 py-3 rounded-full text-xl font-normal max-[670px]:w-full">
                     Apply Coupon
                 </button>
             </div>
-            <div className="mt-10 grid grid-cols-2 gap-x-4">
+            <div className="mt-10 grid grid-cols-2 gap-x-4 max-[875]:grid-cols-1">
                 <div></div>
                 <div>
                     <h1 className="text-2xl font-bold text-[#0F4C81]">Billing Details</h1>
-                    <form className="mt-6 grid grid-cols-2 gap-x-4 gap-y-5">
+                    <form className="mt-6 grid grid-cols-2 gap-x-4 gap-y-5 max-[750px]:flex max-[750px]:flex-col">
                         <div className="col-span-2">
                             <label htmlFor="email" className="block text-gray-700 font-semibold mb-2">
                                 Email Address <span className="text-[#CB0404]">*</span>
@@ -85,7 +85,7 @@ export function CheckoutPage({
                                 className="w-full px-3 py-2 border border-[#D9D9D9] rounded-md text-base font-normal"
                             />
                         </div>
-                        <div className="col-span-2 grid grid-cols-2 items-center gap-x-2">
+                        <div className="col-span-2 grid grid-cols-2 items-center gap-x-2 gap-y-3 max-[750px]:grid-cols-1">
                             <div>
                                 <label htmlFor="firstName" className="block text-gray-700 font-semibold mb-2">
                                     First Name <span className="text-[#CB0404]">*</span>
