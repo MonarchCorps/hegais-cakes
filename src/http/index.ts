@@ -1,5 +1,6 @@
 "use server";
 
+import { Product } from "@/app/shop/[productId]/product-details";
 import { TasterBoxInquiryType, WeddingCakeInquiryType, WorkshopInquiryType } from "@/schema";
 import pb from "@/services";
 
@@ -63,8 +64,9 @@ export async function getProducts() {
 
 export async function getProductById(id: string) {
     try {
-        const record = await pb.collection("Shop").getOne(id);
-        return record;
+        const data = await getProducts();
+        const current = data.find((p: Product) => p.id === id);
+        return current;
     } catch (error) {
         console.error("Error fetching product by id:", error);
         throw error;

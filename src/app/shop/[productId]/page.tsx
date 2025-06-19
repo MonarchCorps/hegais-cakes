@@ -1,3 +1,4 @@
+import { getProductById } from "@/http";
 import TasterBoxProductDetails from "./product-details";
 
 export default async function TasterBoxProduct({
@@ -6,7 +7,9 @@ export default async function TasterBoxProduct({
     }) {
     const { productId } = await params;
 
+    const product = await getProductById(productId)
+
     return (
-        <TasterBoxProductDetails productId={productId} />
+        <TasterBoxProductDetails product={product} />
     )
 }
