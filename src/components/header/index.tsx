@@ -23,7 +23,7 @@ const mobileNavLinks = [
         href: "/taster-box"
     },
     {
-        label: "Cakes",
+        label: "Wedding Cakes",
         href: "/wedding-cakes",
         isDropdown: true
     },
