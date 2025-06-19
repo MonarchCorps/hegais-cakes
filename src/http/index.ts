@@ -1,7 +1,7 @@
 "use server";
 
 import { Product } from "@/app/shop/[productId]/product-details";
-import { TasterBoxInquiryType, WeddingCakeInquiryType, WorkshopInquiryType } from "@/schema";
+import { CelebrationCakeInquiryType, TasterBoxInquiryType, WeddingCakeInquiryType, WorkshopInquiryType } from "@/schema";
 import pb from "@/services";
 
 export async function createWorkShopBooking(data: WorkshopInquiryType) {
@@ -24,15 +24,15 @@ export async function createTasteBoxInquiry(data: TasterBoxInquiryType) {
     }
 }
 
-// export async function createBespokeCakeInquiry(data: CreateBespokeCakeInquiryType) {
-//     try {
-//         const record = await pb.collection("bespokecakeinquiry").create(data);
-//         return record;
-//     } catch (error) {
-//         console.error("Error creating bespoke cake inquiry:", error);
-//         throw error;
-//     }
-// }
+export async function createBespokeCakeInquiry(data: CelebrationCakeInquiryType) {
+    try {
+        const record = await pb.collection("bespokecakeinquiry").create(data);
+        return record;
+    } catch (error) {
+        console.error("Error creating bespoke cake inquiry:", error);
+        throw error;
+    }
+}
 
 export async function createWeddingCakeInquiry(data: WeddingCakeInquiryType) {
     try {

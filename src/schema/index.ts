@@ -46,3 +46,25 @@ export const workshopInquirySchema = Yup.object({
 });
 
 export type WorkshopInquiryType = Yup.InferType<typeof workshopInquirySchema>;
+
+export const celebrationCakeInquirySchema = Yup.object({
+    birthday: Yup.string().required("Required"),
+    event_type: Yup.string().required("Required"),
+    event_date: Yup.string().required("Required"),
+    event_time: Yup.string().required("Required"),
+    theme_or_inspiration: Yup.string().required("Required"),
+    number_of_tiers: Yup.string().required("Required"),
+    tier_shape: Yup.string().required("Required"),
+    size: Yup.string().required("Required"),
+    flavours: Yup.string().required("Required"),
+    design_inspiration: Yup.mixed().nullable(),
+    arrange_collection_ickenham: Yup.string().required("Required"),
+    full_name: Yup.string().required("Required"),
+    email: Yup.string().email("Invalid").required("Required"),
+    phone_number: Yup.string().required("Required"),
+    additional_details: Yup.string().nullable(),
+    dietary_needs: Yup.string().nullable(),
+    other_dietary_need: Yup.string().nullable()
+});
+
+export type CelebrationCakeInquiryType = Yup.InferType<typeof celebrationCakeInquirySchema>;
