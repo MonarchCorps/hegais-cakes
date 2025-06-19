@@ -89,7 +89,7 @@ export default function TasterBoxProductDetails({ product }: { product: Product 
         <>
             <section>
                 <div className='max-w-[75rem] mx-auto'>
-                    <div className='pt-10 grid grid-cols-2 gap-x-8 gap-y-5 px-10 mb-10'>
+                    <div className='pt-10 grid grid-cols-2 gap-x-8 gap-y-8 px-10 mb-10 max-[1000px]:grid-cols-1 max-[530px]:px-5'>
                         <div>
                             <AnimatePresence mode="wait" initial={false}>
                                 <motion.div
@@ -109,7 +109,7 @@ export default function TasterBoxProductDetails({ product }: { product: Product 
                                 </motion.div>
                             </AnimatePresence>
 
-                            <div className="grid grid-cols-3 gap-4 mt-5">
+                            <div className="grid grid-cols-3 gap-4 mt-5 max-[1000px]:grid-cols-[repeat(auto-fill,minmax(150px,1fr))] max-[368px]:grid-cols-[repeat(4,140px)] max-[368px]:overflow-x-scroll scrollbar-hide">
                                 {images.map((img, idx) => (
                                     img && (
                                         <button
@@ -137,24 +137,24 @@ export default function TasterBoxProductDetails({ product }: { product: Product 
 
                         </div>
                         <div className='space-y-5'>
-                            <h1 className='text-5xl font-bold'>{product?.name}</h1>
+                            <h1 className='text-5xl font-bold max-[530px]:text-4xl'>{product?.name}</h1>
                             <div className='flex items-center gap-x-4'>
-                                <h3 className='text-[#277500] text-4xl font-semibold'>£ {Number.parseInt(product?.price || "0").toLocaleString()}</h3>
+                                <h3 className='text-[#277500] text-4xl font-semibold max-[530px]:text-3xl'>£ {Number.parseInt(product?.price || "0").toLocaleString()}</h3>
                                 <p className='text-[#277500] text-xl'>Available</p>
                             </div>
-                            <p className='text-xl leading-[1.8] text-[#50555C]'>
+                            <p className='text-xl leading-[1.8] text-[#50555C] max-[530px]:text-base'>
                                 {stripHtml(product?.description || "")}
                             </p>
                             <div className='space-y-3   pb-10 border-b border-[#E0E0E0]'>
-                                <p className='text-xl'>4 slices, 8 servings</p>
-                                <p className='text-base'>PRE-ORDER for delivery on ____</p>
+                                <p className='text-xl max-[530px]:text-lg'>4 slices, 8 servings</p>
+                                <p className='text-base max-[530px]:text-sm'>PRE-ORDER for delivery on ____</p>
                             </div>
                             <div className='mt-4 text-[#50555C]'>
-                                <h3 className='text-2xl font-medium mb-4'>Add a lovely gift note (optional)</h3>
+                                <h3 className='text-2xl font-medium mb-4 max-[530px]:text-xl'>Add a lovely gift note (optional)</h3>
                                 <textarea className='w-full h-40 resize-none p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500' />
                             </div>
                             <div>
-                                <h3 className="text-xl text-[#333333] mb-3">
+                                <h3 className="text-xl text-[#333333] mb-3 max-[530px]:text-lg">
                                     Pick any four (4) flavours
                                 </h3>
                                 <div className="space-y-3 text-[#333333]">
@@ -176,7 +176,7 @@ export default function TasterBoxProductDetails({ product }: { product: Product 
                                     ))}
                                 </div>
                             </div>
-                            <div className='border-t border-[#E0E0E0] pt-4 grid grid-cols-[1fr_2fr_auto] gap-x-3'>
+                            <div className='border-t border-[#E0E0E0] pt-4 grid grid-cols-[1fr_2fr_auto] gap-x-3 max-[483px]:grid-cols-[1fr_auto] max-[483px]:gap-y-3'>
                                 <div className='border border-[#0F4C81] flex items-center justify-evenly py-3 px-1 rounded-full text-xl'>
                                     <button
                                         onClick={() => setQuantity(quantity + 1)}
@@ -189,8 +189,17 @@ export default function TasterBoxProductDetails({ product }: { product: Product 
                                     >-</button>
                                 </div>
                                 <button
+                                    onClick={() => setIsWishlisted((w) => !w)}
+                                    className={`cursor-pointer hidden max-[483px]:flex w-14 justify-center items-center p-2 rounded-lg border transition-colors max-[483px]:col-start-2 ${isWishlisted
+                                        ? 'bg-red-50 border-red-200 text-red-600'
+                                        : 'bg-gray-50 border-gray-200 text-gray-600 hover:bg-gray-100'
+                                        }`}
+                                >
+                                    <Heart className={`w-5 h-5 ${isWishlisted ? 'fill-current' : ''}`} />
+                                </button>
+                                <button
                                     onClick={handleAddToCart}
-                                    className="cursor-pointer bg-[#0F4C81] text-white px-4 py-4 rounded-full flex items-center justify-center gap-x-2 border border-current transition-all duration-300 hover:text-[#0F4C81] hover:bg-white hover:border-[#0F4C81] disabled:opacity-50 disabled:cursor-not-allowed"
+                                    className="cursor-pointer bg-[#0F4C81] text-white px-4 py-4 rounded-full flex items-center justify-center gap-x-2 border border-current transition-all duration-300 hover:text-[#0F4C81] hover:bg-white hover:border-[#0F4C81] disabled:opacity-50 disabled:cursor-not-allowed max-[483px]:col-span-full"
                                     disabled={selectedFlavors.length !== 4}
                                 >
                                     <ShoppingCart className='w-5 h-5' />
@@ -198,7 +207,7 @@ export default function TasterBoxProductDetails({ product }: { product: Product 
                                 </button>
                                 <button
                                     onClick={() => setIsWishlisted((w) => !w)}
-                                    className={`w-14 flex justify-center items-center p-2 rounded-lg border transition-colors ${isWishlisted
+                                    className={`cursor-pointer w-14 flex justify-center items-center p-2 rounded-lg border transition-colors max-[483px]:col-start-2 max-[483px]:hidden ${isWishlisted
                                         ? 'bg-red-50 border-red-200 text-red-600'
                                         : 'bg-gray-50 border-gray-200 text-gray-600 hover:bg-gray-100'
                                         }`}
@@ -209,7 +218,7 @@ export default function TasterBoxProductDetails({ product }: { product: Product 
 
                         </div>
                     </div>
-                    <div className='border-y border-[#E0E0E0] py-5 mb-4'>
+                    <div className='border-y border-[#E0E0E0] py-5 mb-4 px-5'>
                         <h2 className='text-2xl font-bold text-[#333333]'>Sweet Words from Our Customers</h2>
                         <div className='flex flex-col gap-y-4 items-center mt-4 mb-6 text-[#D9D9D9]'>
                             <GiCakeSlice className='w-10 h-10' />
@@ -231,23 +240,26 @@ export default function TasterBoxProductDetails({ product }: { product: Product 
 
 const ReviewModal = ({ setIsReviewModalOpen }: { setIsReviewModalOpen: (isOpen: boolean) => void }) => {
     return (
-        <div className='fixed inset-0 bg-black/60 flex justify-center items-center'>
-            <div className='max-w-[40rem] w-full py-6 px-7 bg-white'>
-                <div className='flex items-start justify-between gap-x-7'>
+        <div className='fixed inset-0 bg-black/60 flex justify-center items-center z-[1000]'>
+            <div className='max-w-[40rem] w-full py-6 px-7 bg-white max-[530px]:px-4'>
+                <div className='relative flex items-start justify-between gap-x-7 max-[573px]:gap-x-0 max-[573px]:flex-col-reverse '>
+
                     <div className='flex-1'>
-                        <h2 className='text-[#333333] font-bold text-xl'>Tell Us About Your Cake Experience</h2>
-                        <p className='text-[#50555C] mt-1'>
+                        <h2 className='text-[#333333] font-bold text-xl max-[573px]:text-lg'>Tell Us About Your Cake Experience</h2>
+                        <p className='text-[#50555C] mt-1 max-[573px]:text-sm'>
                             Tried our Taster Box? Leave a review and help others discover the sweetness!
                         </p>
-                        <p className='text-[#CB0404] text-sm mt-2'>Required fields are marked *</p>
-                        <p className='text-[#333333] text-sm mt-2'>
+                        <p className='text-[#CB0404] text-sm mt-2 max-[573px]:text-xs'>Required fields are marked *</p>
+                        <p className='text-[#333333] text-sm mt-2 max-[573px]:text-xs'>
                             Your rating
                             <span className='text-[#CB0404]'>*</span>
                         </p>
                     </div>
-                    <button type='button' className='cursor-pointer' onClick={() => setIsReviewModalOpen(false)}>
+
+                    <button type='button' className='cursor-pointer max-[573px]:self-end' onClick={() => setIsReviewModalOpen(false)}>
                         <X className='w-5 h-5' />
                     </button>
+
                 </div>
                 <div className='flex items-center justify-center gap-x-8 mt-7'>
                     <div className='flex items-center gap-x-1 text-[#333333]'>
