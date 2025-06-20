@@ -2,53 +2,134 @@
 // import { ChevronDown } from "lucide-react";
 // import toast from "react-hot-toast";
 
+import { useState, useEffect } from "react";
+import toast from "react-hot-toast";
+import { createOrder } from "@/http";
+import type { OrderType } from "@/schema";
+
+type CartItem = {
+    productId: string;
+    name: string;
+    price: string;
+    quantity: number;
+    selectedFlavors: string[];
+    timestamp: string;
+};
+
 export function CheckoutPage({
     setCurrentStep,
 }: {
     setCurrentStep: (step: number) => void;
 }) {
     // ---- form state ----
-    // const [form, setForm] = useState({
-    //     email: "",
-    //     firstName: "",
-    //     lastName: "",
-    //     company: "",
-    //     country: "United Kingdom (UK)",
-    //     address1: "",
-    //     address2: "",
-    //     city: "",
-    //     county: "",
-    //     postcode: "",
-    //     shipToDifferent: false,
-    //     orderNotes: "",
-    // });
+    const [form, setForm] = useState({
+        email: "",
+        firstName: "",
+        lastName: "",
+        company: "",
+        country: "",
+        address1: "",
+        address2: "",
+        city: "",
+        county: "",
+        postcode: "",
+        shipToDifferent: false,
+        orderNotes: "",
+    });
+
+    // ---- cart state ----
+    const [cart, setCart] = useState<CartItem[]>([]);
+    const [isLoading, setIsLoading] = useState(false);
+
+    // Load cart data on mount
+    useEffect(() => {
+        const stored = JSON.parse(localStorage.getItem("cart") || "[]") as CartItem[];
+        setCart(stored);
+    }, []);
 
     // // ---- validation state ----
-    // // const [errors, setErrors] = useState<Record<string, string>>({});
+    const [errors, setErrors] = useState<Record<string, string>>({});
 
-    // // const validate = () => {
-    //     const errs: Record<string, string> = {};
-    //     if (!form.email) errs.email = "Email is required";
-    //     if (!form.firstName) errs.firstName = "First name is required";
-    //     if (!form.lastName) errs.lastName = "Last name is required";
-    //     if (!form.country) errs.country = "Country is required";
-    //     if (!form.address1) errs.address1 = "Street address is required";
-    //     if (!form.city) errs.city = "Town/City is required";
-    //     if (!form.postcode) errs.postcode = "Postcode is required";
-    //     return errs;
-    // };
+    const validate = () => {
+        const errs: Record<string, string> = {};
+        if (!form.email) errs.email = "Email is required";
+        if (!form.firstName) errs.firstName = "First name is required";
+        if (!form.lastName) errs.lastName = "Last name is required";
+        if (!form.country) errs.country = "Country is required";
+        if (!form.address1) errs.address1 = "Street address is required";
+        if (!form.city) errs.city = "Town/City is required";
+        if (!form.postcode) errs.postcode = "Postcode is required";
+        return errs;
+    };
 
-    // const handlePlaceOrder = () => {
-    //     const validationErrors = validate();
-    //     setErrors(validationErrors);
-    //     if (Object.keys(validationErrors).length > 0) {
-    //         toast.error("Please fill in all required fields");
-    //         return;
-    //     }
-    //     // all good → proceed
-    //     setCurrentStep(3);
-    //     window.scrollTo({ top: 0, behavior: "smooth" });
-    // };
+    const handlePlaceOrder = async () => {
+        const validationErrors = validate();
+        setErrors(validationErrors);
+        if (Object.keys(validationErrors).length > 0) {
+            toast.error("Please fill in all required fields");
+            return;
+        }
+
+        if (cart.length === 0) {
+            toast.error("Your cart is empty");
+            return;
+        }
+
+        setIsLoading(true);
+
+        try {
+            // Calculate totals
+            const subtotal = cart.reduce(
+                (sum, item) => sum + parseFloat(item.price) * item.quantity,
+                0
+            );
+            const shipping = 7;
+            const total = subtotal + shipping;
+
+            // Transform cart data to match OrderType schema
+            const orderData: OrderType = {
+                items: cart.map(item => ({
+                    product: item.productId,
+                    quantity: item.quantity,
+                    price: parseFloat(item.price),
+                    flavours: item.selectedFlavors.join(", ") || null,
+                    gift_note: null
+                })),
+                total: total,
+                payment_method: "stripe",
+                billing: {
+                    email: form.email,
+                    firstname: form.firstName,
+                    lastname: form.lastName,
+                    company_name: form.company || null,
+                    street_address: form.address1,
+                    town: form.city,
+                    country: form.country,
+                    postal_code: form.postcode,
+                    order_notes: form.orderNotes || null
+                }
+            };
+
+            // Create order
+            const result = await createOrder(orderData);
+
+            if (result.success && result.paymentUrl) {
+                // Clear cart after successful order creation
+                localStorage.setItem("cart", "[]");
+                
+                // Redirect to payment URL
+                window.location.href = result.paymentUrl;
+            } else {
+                toast.error("Failed to create order. Please try again.");
+            }
+
+        } catch (error) {
+            console.error("Error creating order:", error);
+            toast.error("Failed to create order. Please try again.");
+        } finally {
+            setIsLoading(false);
+        }
+    };
 
     return (
         <div className="mt-14">
@@ -83,6 +164,8 @@ export function CheckoutPage({
                                 type="email"
                                 id="email"
                                 className="w-full px-3 py-2 border border-[#D9D9D9] rounded-md text-base font-normal"
+                                value={form.email}
+                                onChange={(e) => setForm({ ...form, email: e.target.value })}
                             />
                         </div>
                         <div className="col-span-2 grid grid-cols-2 items-center gap-x-2 gap-y-3 max-[750px]:grid-cols-1">
@@ -94,6 +177,8 @@ export function CheckoutPage({
                                     type="text"
                                     id="firstName"
                                     className="w-full px-3 py-2 border border-[#D9D9D9] rounded-md text-base font-normal"
+                                    value={form.firstName}
+                                    onChange={(e) => setForm({ ...form, firstName: e.target.value })}
                                 />
                             </div>
                             <div>
@@ -104,6 +189,8 @@ export function CheckoutPage({
                                     type="text"
                                     id="lastName"
                                     className="w-full px-3 py-2 border border-[#D9D9D9] rounded-md text-base font-normal"
+                                    value={form.lastName}
+                                    onChange={(e) => setForm({ ...form, lastName: e.target.value })}
                                 />
                             </div>
                         </div>
@@ -116,6 +203,8 @@ export function CheckoutPage({
                                 type="text"
                                 id="company"
                                 className="w-full px-3 py-2 border border-[#D9D9D9] rounded-md text-base font-normal"
+                                value={form.company}
+                                onChange={(e) => setForm({ ...form, company: e.target.value })}
                             />
                         </div>
 
@@ -127,6 +216,8 @@ export function CheckoutPage({
                                 type="text"
                                 id="country"
                                 className="w-full px-3 py-2 border border-[#D9D9D9] rounded-md text-base font-normal"
+                                value={form.country}
+                                onChange={(e) => setForm({ ...form, country: e.target.value })}
                             />
                         </div>
 
@@ -138,11 +229,15 @@ export function CheckoutPage({
                                 type="text"
                                 id="address1"
                                 className="mb-2 w-full px-3 py-2 border border-[#D9D9D9] rounded-md text-base font-normal"
+                                value={form.address1}
+                                onChange={(e) => setForm({ ...form, address1: e.target.value })}
                             />
                             <input
                                 type="text"
                                 id="address2"
                                 className="w-full px-3 py-2 border border-[#D9D9D9] rounded-md text-base font-normal"
+                                value={form.address2}
+                                onChange={(e) => setForm({ ...form, address2: e.target.value })}
                             />
                         </div>
 
@@ -154,6 +249,8 @@ export function CheckoutPage({
                                 type="text"
                                 id="city"
                                 className="w-full px-3 py-2 border border-[#D9D9D9] rounded-md text-base font-normal"
+                                value={form.city}
+                                onChange={(e) => setForm({ ...form, city: e.target.value })}
                             />
                         </div>
 
@@ -165,6 +262,8 @@ export function CheckoutPage({
                                 type="text"
                                 id="county"
                                 className="w-full px-3 py-2 border border-[#D9D9D9] rounded-md text-base font-normal"
+                                value={form.county}
+                                onChange={(e) => setForm({ ...form, county: e.target.value })}
                             />
                         </div>
 
@@ -176,6 +275,8 @@ export function CheckoutPage({
                                 type="text"
                                 id="postcode"
                                 className="w-full px-3 py-2 border border-[#D9D9D9] rounded-md text-base font-normal"
+                                value={form.postcode}
+                                onChange={(e) => setForm({ ...form, postcode: e.target.value })}
                             />
                         </div>
 
@@ -186,12 +287,15 @@ export function CheckoutPage({
                             <textarea
                                 id="orderNotes"
                                 className="w-full px-3 py-2 border border-[#D9D9D9] rounded-md text-base font-normal h-32 resize-none"
+                                value={form.orderNotes}
+                                onChange={(e) => setForm({ ...form, orderNotes: e.target.value })}
                             />
                         </div>
                         <button type="button"
-                            onClick={() => setCurrentStep(3)}
-                            className="col-span-2 cursor-pointer bg-[#0F4C81] text-white px-8 py-3 rounded-full text-xl font-normal">
-                            Place Order
+                            onClick={handlePlaceOrder}
+                            disabled={isLoading}
+                            className="col-span-2 cursor-pointer bg-[#0F4C81] text-white px-8 py-3 rounded-full text-xl font-normal disabled:opacity-50 disabled:cursor-not-allowed">
+                            {isLoading ? "Creating Order..." : "Place Order"}
                         </button>
                     </form>
                 </div>

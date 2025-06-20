@@ -70,7 +70,7 @@ export const CartPage = ({
         (sum, item) => sum + parseFloat(item.price) * item.quantity,
         0
     );
-    const shipping = 200;
+    const shipping = 7;
     const total = subtotal + shipping;
 
     return (
@@ -88,11 +88,13 @@ export const CartPage = ({
                             return (
                                 <div key={idx} className="border-y border-[#D9D9D9] py-4 grid grid-cols-[15rem_1fr_auto] gap-x-5 gap-y-5 max-[880px]:grid-cols-[15rem_1fr] max-[572px]:grid-cols-1">
                                     <div className="min-w-full min-h-full">
-                                        <img
-                                            src={imgSrc}
-                                            alt="Product Image"
-                                            className="size-full object-cover"
-                                        />
+                                        {imgSrc && imgSrc !== "" && (
+                                            <img
+                                                src={imgSrc}
+                                                alt="Product Image"
+                                                className="size-full object-cover"
+                                            />
+                                        )}
                                     </div>
                                     <div className="flex flex-col gap-y-2">
                                         <h1 className="text-2xl">{item.name}</h1>
@@ -117,7 +119,7 @@ export const CartPage = ({
                                     </div>
                                     <div className="flex flex-col justify-between items-end text-end max-[880px]:col-span-full">
                                         <div className="mb-5">
-                                            <h2 className="text-2xl font-bold text-[#0F4C81]">£ {Number.parseInt(item.price).toLocaleString()}</h2>
+                                            <h2 className="text-2xl font-bold text-[#0F4C81]">£ {(Number.parseInt(item.price) * item.quantity).toLocaleString()}</h2>
                                             <p className="text-[#E04F85]">Shipping & Taxes calculated at checkout</p>
                                         </div>
                                         <button
@@ -174,10 +176,10 @@ export const CartPage = ({
                                     <h1 className="text-xl font-medium">Total</h1>
                                     <h1 className="text-xl font-bold">£ {total.toLocaleString()}</h1>
                                 </div>
-                                <button 
-                                type="button"
-                                onClick={() => setCurrentStep(2)}
-                                className="cursor-pointer w-full bg-[#0F4C81] text-white px-8 py-3 rounded-full text-xl font-normal transition-all duration-300 border border-transparent hover:border-[#0F4C81] hover:bg-transparent hover:text-[#0F4C81]">
+                                <button
+                                    type="button"
+                                    onClick={() => setCurrentStep(2)}
+                                    className="cursor-pointer w-full bg-[#0F4C81] text-white px-8 py-3 rounded-full text-xl font-normal transition-all duration-300 border border-transparent hover:border-[#0F4C81] hover:bg-transparent hover:text-[#0F4C81]">
                                     Proceed To Checkout
                                 </button>
                             </div>

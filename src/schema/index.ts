@@ -68,3 +68,28 @@ export const celebrationCakeInquirySchema = Yup.object({
 });
 
 export type CelebrationCakeInquiryType = Yup.InferType<typeof celebrationCakeInquirySchema>;
+
+export const orderSchema = Yup.object({
+    items: Yup.array().of(Yup.object({
+        product: Yup.string().required("Required"),
+        quantity: Yup.number().required("Required").positive(),
+        price: Yup.number().required("Required").positive(),
+        flavours: Yup.string().nullable(),
+        gift_note: Yup.string().nullable(),
+    })).required("Required"),
+    total: Yup.number().required("Required").positive(),
+    payment_method: Yup.string().required("Required"),
+    billing: Yup.object({
+        email: Yup.string().email("Invalid email").required("Required"),
+        firstname: Yup.string().required("Required"),
+        lastname: Yup.string().required("Required"),
+        company_name: Yup.string().nullable(),
+        street_address: Yup.string().required("Required"),
+        town: Yup.string().required("Required"),
+        country: Yup.string().required("Required"),
+        postal_code: Yup.string().required("Required"),
+        order_notes: Yup.string().nullable(),
+    }).required("Required"),
+});
+
+export type OrderType = Yup.InferType<typeof orderSchema>;
