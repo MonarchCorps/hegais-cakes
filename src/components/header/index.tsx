@@ -38,6 +38,10 @@ const mobileNavLinks = [
     {
         label: "Shop",
         href: "/shop"
+    },
+    {
+        label: "Wishlist",
+        href: "/wishlist"
     }
 ]
 
@@ -47,6 +51,28 @@ export default function Header() {
     const [showCakesDropdown, setShowCakesDropdown] = useState(false);
     const pathname = usePathname();
     const [searchFilter, setSearchFilter] = useState("");
+    const [wishlistCount, setWishlistCount] = useState(0);
+
+    // Load wishlist count on mount and when it changes
+    useEffect(() => {
+        const updateWishlistCount = () => {
+            const wishlist = JSON.parse(localStorage.getItem('wishlist') || '[]');
+            setWishlistCount(wishlist.length);
+        };
+
+        updateWishlistCount();
+        
+        // Listen for storage changes
+        window.addEventListener('storage', updateWishlistCount);
+        
+        // Also listen for custom events (for same-tab updates)
+        window.addEventListener('wishlistUpdated', updateWishlistCount);
+        
+        return () => {
+            window.removeEventListener('storage', updateWishlistCount);
+            window.removeEventListener('wishlistUpdated', updateWishlistCount);
+        };
+    }, []);
 
     // Close mobile nav on route change
     useEffect(() => {
@@ -209,13 +235,18 @@ export default function Header() {
 
                 {/* actions */}
                 <div className="flex items-center gap-x-4 max-[943px]:hidden">
-                    <Link href="/" className="text-[#0F4C81] bg-[#A7C7E7] py-2 px-2 rounded-full">
+                    <Link href="/wishlist" className="relative text-[#0F4C81] bg-[#A7C7E7] py-2 px-2 rounded-full hover:bg-[#9BB8D4] transition-colors">
                         <Heart size={20} />
+                        {wishlistCount > 0 && (
+                            <span className="absolute -top-2 -right-2 bg-red-500 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center font-medium">
+                                {wishlistCount > 9 ? '9+' : wishlistCount}
+                            </span>
+                        )}
                     </Link>
-                    <Link href="/cart" className="text-[#0F4C81] bg-[#A7C7E7] py-2 px-2 rounded-full">
+                    <Link href="/cart" className="text-[#0F4C81] bg-[#A7C7E7] py-2 px-2 rounded-full hover:bg-[#9BB8D4] transition-colors">
                         <ShoppingCart size={20} />
                     </Link>
-                    <Link href="/" className="text-[#0F4C81] bg-[#A7C7E7] py-2 px-2 rounded-full">
+                    <Link href="/" className="text-[#0F4C81] bg-[#A7C7E7] py-2 px-2 rounded-full hover:bg-[#9BB8D4] transition-colors">
                         <Search size={20} />
                     </Link>
                 </div>

@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Heart, ShoppingCart, X } from 'lucide-react';
 import toast from 'react-hot-toast';
 import { stripHtml } from '@/utils';
@@ -32,6 +32,12 @@ export default function TasterBoxProductDetails({ product }: { product: Product 
     const [quantity, setQuantity] = useState<number>(1);
     const [isWishlisted, setIsWishlisted] = useState<boolean>(false);
 
+    // Load wishlist state on mount
+    useEffect(() => {
+        const wishlist = JSON.parse(localStorage.getItem('wishlist') || '[]');
+        setIsWishlisted(wishlist.includes(product.id));
+    }, [product.id]);
+
     const images = [
         product?.image1 || null,
         product?.image2 || null,
@@ -56,6 +62,27 @@ export default function TasterBoxProductDetails({ product }: { product: Product 
         } else if (selectedFlavors.length < 4) {
             setSelectedFlavors((f) => [...f, flavor]);
         }
+    };
+
+    const handleWishlistToggle = () => {
+        const wishlist = JSON.parse(localStorage.getItem('wishlist') || '[]');
+        
+        if (isWishlisted) {
+            // Remove from wishlist
+            const updatedWishlist = wishlist.filter((id: string) => id !== product.id);
+            localStorage.setItem('wishlist', JSON.stringify(updatedWishlist));
+            setIsWishlisted(false);
+            toast.success('Removed from wishlist');
+        } else {
+            // Add to wishlist
+            const updatedWishlist = [...wishlist, product.id];
+            localStorage.setItem('wishlist', JSON.stringify(updatedWishlist));
+            setIsWishlisted(true);
+            toast.success('Added to wishlist');
+        }
+
+        // Dispatch custom event to update header counter
+        window.dispatchEvent(new Event('wishlistUpdated'));
     };
 
     // const nextImage = () => {
@@ -189,7 +216,7 @@ export default function TasterBoxProductDetails({ product }: { product: Product 
                                     >-</button>
                                 </div>
                                 <button
-                                    onClick={() => setIsWishlisted((w) => !w)}
+                                    onClick={handleWishlistToggle}
                                     className={`cursor-pointer hidden max-[483px]:flex w-14 justify-center items-center p-2 rounded-lg border transition-colors max-[483px]:col-start-2 ${isWishlisted
                                         ? 'bg-red-50 border-red-200 text-red-600'
                                         : 'bg-gray-50 border-gray-200 text-gray-600 hover:bg-gray-100'
@@ -206,7 +233,7 @@ export default function TasterBoxProductDetails({ product }: { product: Product 
                                     <span> Add To Cart</span>
                                 </button>
                                 <button
-                                    onClick={() => setIsWishlisted((w) => !w)}
+                                    onClick={handleWishlistToggle}
                                     className={`cursor-pointer w-14 flex justify-center items-center p-2 rounded-lg border transition-colors max-[483px]:col-start-2 max-[483px]:hidden ${isWishlisted
                                         ? 'bg-red-50 border-red-200 text-red-600'
                                         : 'bg-gray-50 border-gray-200 text-gray-600 hover:bg-gray-100'
