@@ -93,3 +93,14 @@ export const orderSchema = Yup.object({
 });
 
 export type OrderType = Yup.InferType<typeof orderSchema>;
+
+export const reviewSchema = Yup.object({
+    product_id: Yup.string().required("Product ID is required"),
+    rating: Yup.number().required("Rating is required").min(1, "Rating must be at least 1").max(5, "Rating must be at most 5"),
+    review: Yup.string().required("Review comment is required").min(10, "Review must be at least 10 characters"),
+    name: Yup.string().required("Name is required"),
+    email: Yup.string().email("Invalid email").required("Email is required"),
+    save_info: Yup.boolean().default(false)
+});
+
+export type ReviewType = Yup.InferType<typeof reviewSchema>;

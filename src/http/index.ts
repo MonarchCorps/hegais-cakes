@@ -1,7 +1,7 @@
 "use server";
 
 import { Product } from "@/app/shop/[productId]/product-details";
-import { CelebrationCakeInquiryType, TasterBoxInquiryType, WeddingCakeInquiryType, WorkshopInquiryType, OrderType } from "@/schema";
+import { CelebrationCakeInquiryType, TasterBoxInquiryType, WeddingCakeInquiryType, WorkshopInquiryType, OrderType, ReviewType } from "@/schema";
 import pb from "@/services";
 
 export async function createWorkShopBooking(data: WorkshopInquiryType) {
@@ -137,6 +137,16 @@ export async function createOrder(data: OrderType) {
 
     } catch (error) {
         console.error("Error creating order:", error);
+        throw error;
+    }
+}
+
+export async function createReview(data: ReviewType) {
+    try {
+        const record = await pb.collection("feedback").create(data);
+        return record;
+    } catch (error) {
+        console.error("Error creating review:", error);
         throw error;
     }
 }

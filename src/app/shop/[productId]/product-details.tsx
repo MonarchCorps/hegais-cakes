@@ -259,7 +259,7 @@ export default function TasterBoxProductDetails({ product }: { product: Product 
                     </div>
                 </div>
             </section>
-            {isReviewModalOpen && <ReviewModal setIsReviewModalOpen={setIsReviewModalOpen}  />}
+            {isReviewModalOpen && <ReviewModal setIsReviewModalOpen={setIsReviewModalOpen} product={product} />}
         </>
     );
 }
@@ -267,18 +267,115 @@ export default function TasterBoxProductDetails({ product }: { product: Product 
 
 const ReviewModal = ({
     setIsReviewModalOpen,
+    product,
 }: {
     setIsReviewModalOpen: (isOpen: boolean) => void,
+    product: Product,
 }) => {
+    const [rating, setRating] = useState<number>(0);
+    const [formData, setFormData] = useState({
+        review: "",
+        name: "",
+        email: "",
+        save_info: false
+    });
+    const [errors, setErrors] = useState<Record<string, string>>({});
+    const [isSubmitting, setIsSubmitting] = useState(false);
+
+    const validateForm = () => {
+        const newErrors: Record<string, string> = {};
+        
+        if (rating === 0) {
+            newErrors.rating = "Please select a rating";
+        }
+        
+        if (!formData.review.trim()) {
+            newErrors.review = "Review comment is required";
+        } else if (formData.review.trim().length < 10) {
+            newErrors.review = "Review must be at least 10 characters";
+        }
+        
+        if (!formData.name.trim()) {
+            newErrors.name = "Name is required";
+        }
+        
+        if (!formData.email.trim()) {
+            newErrors.email = "Email is required";
+        } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
+            newErrors.email = "Please enter a valid email";
+        }
+        
+        setErrors(newErrors);
+        return Object.keys(newErrors).length === 0;
+    };
+
+    const handleSubmit = async (e: React.FormEvent) => {
+        e.preventDefault();
+        
+        if (!validateForm()) {
+            return;
+        }
+
+        setIsSubmitting(true);
+
+        try {
+            const reviewData = {
+                product_id: product.id,
+                rating,
+                review: formData.review.trim(),
+                name: formData.name.trim(),
+                email: formData.email.trim(),
+                save_info: formData.save_info
+            };
+
+            // Import the createReview function
+            const { createReview } = await import('@/http');
+            await createReview(reviewData);
+
+            toast.success("Thank you for your review!");
+            setIsReviewModalOpen(false);
+            
+            // Reset form
+            setRating(0);
+            setFormData({
+                review: "",
+                name: "",
+                email: "",
+                save_info: false
+            });
+            setErrors({});
+            
+        } catch (error) {
+            console.error("Error submitting review:", error);
+            toast.error("Failed to submit review. Please try again.");
+        } finally {
+            setIsSubmitting(false);
+        }
+    };
+
+    const handleStarClick = (starRating: number) => {
+        setRating(starRating);
+        if (errors.rating) {
+            setErrors(prev => ({ ...prev, rating: "" }));
+        }
+    };
+
+    const handleInputChange = (field: string, value: string | boolean) => {
+        setFormData(prev => ({ ...prev, [field]: value }));
+        if (errors[field]) {
+            setErrors(prev => ({ ...prev, [field]: "" }));
+        }
+    };
+
     return (
         <div className='fixed inset-0 bg-black/60 flex justify-center items-center z-[1000]'>
-            <div className='max-w-[40rem] w-full py-6 px-7 bg-white max-[530px]:px-4'>
+            <div className='max-w-[40rem] w-full py-6 px-7 bg-white max-[530px]:px-4 max-h-[90vh] overflow-y-auto'>
                 <div className='relative flex items-start justify-between gap-x-7 max-[573px]:gap-x-0 max-[573px]:flex-col-reverse '>
 
                     <div className='flex-1'>
                         <h2 className='text-[#333333] font-bold text-xl max-[573px]:text-lg'>Tell Us About Your Cake Experience</h2>
                         <p className='text-[#50555C] mt-1 max-[573px]:text-sm'>
-                            Tried our Taster Box? Leave a review and help others discover the sweetness!
+                            Tried our {product.name}? Leave a review and help others discover the sweetness!
                         </p>
                         <p className='text-[#CB0404] text-sm mt-2 max-[573px]:text-xs'>Required fields are marked *</p>
                         <p className='text-[#333333] text-sm mt-2 max-[573px]:text-xs'>
@@ -287,74 +384,119 @@ const ReviewModal = ({
                         </p>
                     </div>
 
-                    <button type='button' className='cursor-pointer max-[573px]:self-end' onClick={() => setIsReviewModalOpen(false)}>
+                    <button 
+                        type='button' 
+                        className='cursor-pointer max-[573px]:self-end' 
+                        onClick={() => setIsReviewModalOpen(false)}
+                        disabled={isSubmitting}
+                    >
                         <X className='w-5 h-5' />
                     </button>
 
                 </div>
+                
+                {/* Star Rating */}
                 <div className='flex items-center justify-center gap-x-8 mt-7'>
-                    <div className='flex items-center gap-x-1 text-[#333333]'>
-                        <div className='flex flex-col items-center gap-y-3'>
-                            <IoIosStarOutline size={40} />
-                            <p>1</p>
-                        </div>
-                    </div>
-                    <div className='flex items-center gap-x-1 text-[#333333]'>
-                        <div className='flex flex-col items-center gap-y-3'>
-                            <IoIosStarOutline size={40} />
-                            <p>2</p>
-                        </div>
-                    </div>
-                    <div className='flex items-center gap-x-1 text-[#333333]'>
-                        <div className='flex flex-col items-center gap-y-3'>
-                            <IoIosStarOutline size={40} />
-                            <p>3</p>
-                        </div>
-                    </div>
-                    <div className='flex items-center gap-x-1 text-[#333333]'>
-                        <div className='flex flex-col items-center gap-y-3'>
-                            <IoIosStarOutline size={40} />
-                            <p>4</p>
-                        </div>
-                    </div>
-                    <div className='flex items-center gap-x-1 text-[#333333]'>
-                        <div className='flex flex-col items-center gap-y-3'>
-                            <IoIosStarOutline size={40} />
-                            <p>5</p>
-                        </div>
-                    </div>
+                    {[1, 2, 3, 4, 5].map((star) => (
+                        <button
+                            key={star}
+                            type="button"
+                            onClick={() => handleStarClick(star)}
+                            className="flex items-center gap-x-1 text-[#333333] hover:scale-110 transition-transform"
+                            disabled={isSubmitting}
+                        >
+                            <div className='flex flex-col items-center gap-y-3'>
+                                <IoIosStarOutline 
+                                    size={40} 
+                                    className={rating >= star ? 'text-yellow-400 fill-current' : ''}
+                                />
+                                <p>{star}</p>
+                            </div>
+                        </button>
+                    ))}
                 </div>
-                <form className='mt-7 space-y-4'>
+                {errors.rating && (
+                    <p className="text-red-500 text-sm text-center mt-2">{errors.rating}</p>
+                )}
+
+                <form onSubmit={handleSubmit} className='mt-7 space-y-4'>
                     <div className='flex flex-col gap-y-2'>
                         <label htmlFor="write_review">
-                            <p>Write a review</p>
+                            <p>Write a review <span className='text-[#CB0404]'>*</span></p>
                         </label>
-                        <textarea name="write_review" id="write_review" className='w-full h-32 resize-none p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500' />
+                        <textarea 
+                            name="write_review" 
+                            id="write_review" 
+                            className={`w-full h-32 resize-none p-3 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 ${errors.comment ? 'border-red-500' : 'border-gray-300'}`}
+                            value={formData.review}
+                            onChange={(e) => handleInputChange('review', e.target.value)}
+                            placeholder="Share your experience with this product..."
+                            disabled={isSubmitting}
+                        />
+                        {errors.review && (
+                            <p className="text-red-500 text-sm">{errors.review}</p>
+                        )}
                     </div>
+                    
                     <div className='flex flex-col gap-y-2'>
                         <label htmlFor="name">
-                            <p>Name</p>
+                            <p>Name <span className='text-[#CB0404]'>*</span></p>
                         </label>
-                        <input type="text" name="name" id="name"
-                            className="w-full border border-[#D9D9D9] py-2.5 px-3 rounded-md font-medium"
+                        <input 
+                            type="text" 
+                            name="name" 
+                            id="name"
+                            className={`w-full border py-2.5 px-3 rounded-md font-medium ${errors.name ? 'border-red-500' : 'border-[#D9D9D9]'}`}
+                            value={formData.name}
+                            onChange={(e) => handleInputChange('name', e.target.value)}
+                            placeholder="Your name"
+                            disabled={isSubmitting}
                         />
+                        {errors.name && (
+                            <p className="text-red-500 text-sm">{errors.name}</p>
+                        )}
                     </div>
+                    
                     <div className='flex flex-col gap-y-2'>
                         <label htmlFor="email">
-                            <p>Email</p>
+                            <p>Email <span className='text-[#CB0404]'>*</span></p>
                         </label>
-                        <input type="email" name="email" id="email"
-                            className="w-full border border-[#D9D9D9] py-2.5 px-3 rounded-md font-medium"
+                        <input 
+                            type="email" 
+                            name="email" 
+                            id="email"
+                            className={`w-full border py-2.5 px-3 rounded-md font-medium ${errors.email ? 'border-red-500' : 'border-[#D9D9D9]'}`}
+                            value={formData.email}
+                            onChange={(e) => handleInputChange('email', e.target.value)}
+                            placeholder="your.email@example.com"
+                            disabled={isSubmitting}
                         />
+                        {errors.email && (
+                            <p className="text-red-500 text-sm">{errors.email}</p>
+                        )}
                     </div>
+                    
                     <div className='flex gap-x-3 items-center'>
-                        <input type="checkbox" name="terms" id="terms" className='size-5' />
+                        <input 
+                            type="checkbox" 
+                            name="terms" 
+                            id="terms" 
+                            className='size-5'
+                            checked={formData.save_info}
+                            onChange={(e) => handleInputChange('save_info', e.target.checked)}
+                            disabled={isSubmitting}
+                        />
                         <label htmlFor="terms" className='text-[#333333] text-base'>
                             Save my name, email address and website in this browser for the next time I comment
                         </label>
                     </div>
-                    <button type='submit' className='mt-4 cursor-pointer w-full bg-[#0F4C81] text-white py-4 px-3 rounded-full font-semibold text-lg border-2 border-current hover:bg-transparent hover:text-[#0F4C81] hover:border-[#0F4C81] transition-all duration-300'>
-                        Submit Review
+                    
+                    <button 
+                        type='submit' 
+                        className='mt-4 cursor-pointer w-full bg-[#0F4C81] text-white py-4 px-3 rounded-full font-semibold text-lg border-2 border-current hover:bg-transparent hover:text-[#0F4C81] hover:border-[#0F4C81] transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed'
+                        disabled={isSubmitting}
+                    >
+                        {isSubmitting ? "Submitting..." : "Submit Review"}
                     </button>
                 </form>
             </div>
