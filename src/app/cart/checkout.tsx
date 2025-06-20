@@ -1,6 +1,4 @@
-// import { useState } from "react";
-// import { ChevronDown } from "lucide-react";
-// import toast from "react-hot-toast";
+"use client";
 
 import { useState, useEffect } from "react";
 import toast from "react-hot-toast";
@@ -16,11 +14,7 @@ type CartItem = {
     timestamp: string;
 };
 
-export function CheckoutPage({
-    setCurrentStep,
-}: {
-    setCurrentStep: (step: number) => void;
-}) {
+export function CheckoutPage() {
     // ---- form state ----
     const [form, setForm] = useState({
         email: "",
@@ -48,8 +42,6 @@ export function CheckoutPage({
     }, []);
 
     // // ---- validation state ----
-    const [errors, setErrors] = useState<Record<string, string>>({});
-
     const validate = () => {
         const errs: Record<string, string> = {};
         if (!form.email) errs.email = "Email is required";
@@ -64,7 +56,6 @@ export function CheckoutPage({
 
     const handlePlaceOrder = async () => {
         const validationErrors = validate();
-        setErrors(validationErrors);
         if (Object.keys(validationErrors).length > 0) {
             toast.error("Please fill in all required fields");
             return;

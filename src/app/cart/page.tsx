@@ -60,7 +60,7 @@ const ShoppingCart = () => {
             {
                 currentStep === 1
                     ? <CartPage setCurrentStep={setCurrentStep} /> : currentStep === 2
-                        ? <CheckoutPage setCurrentStep={setCurrentStep} /> : null
+                        ? <CheckoutPage /> : null
             }
         </div>
     )
